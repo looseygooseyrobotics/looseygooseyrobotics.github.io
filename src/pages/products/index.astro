@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import { getAllProducts } from "../../lib/products";
+
+const products = getAllProducts();
+---
+
+<BaseLayout title="Products | Pint-Sized Robotics">
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="section-label">Products</p>
+      <h1>Browse the catalog</h1>
+      <p>
+        Every product here is loaded from one local data file and can point directly
+        to its own Stripe Payment Link.
+      </p>
+    </div>
+  </section>
+
+  <section class="catalog-preview">
+    <div class="container product-grid">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+</BaseLayout>

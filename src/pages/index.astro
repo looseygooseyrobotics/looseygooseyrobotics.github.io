@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+import { getFeaturedProducts } from "../lib/products";
+import ProductCard from "../components/ProductCard.astro";
+
+const featuredProducts = getFeaturedProducts();
+const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/");
+---
+
+<BaseLayout title={`${siteConfig.name} | Robotics Parts Storefront`}>
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">The 2025-2026 Game</p>
+        <h1>Hexy Hustle</h1>
+        <ul class="resource-list">
+          <li><a href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">Read official competition rules</a></li>
+          <li><a href={siteConfig.competitionDiscordUrl} target="_blank" rel="noreferrer">Join team Discord</a></li>
+          <li><a href="/competitions/" target="_blank" rel="noreferrer">Competitions</a></li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button" href="/products/">Browse products</a>
+          <a class="button button-secondary" href="/competitions/">Competitions</a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="video-frame">
+          <iframe
+            src={promoVideoEmbedUrl}
+            title="Hexy Hustle reveal video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <div class="container info-grid">
+      <div>
+        <p class="section-label">How to start</p>
+        <h2>Build a bot</h2>
+        <p>
+            Join the Discord, read the rules, build a bot, go to a competition!
+        </p>
+        <div class="hero-actions">
+          <a class="button" href={siteConfig.competitionDiscordUrl} target="_blank" rel="noreferrer">Join team Discord</a>
+        </div>
+      </div>
+      <div class="info-note">
+        <img src="/images/info-note.svg" alt="Info note" />
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-preview">
+    <div class="container section-header">
+      <div>
+        <p class="section-label">Featured products</p>
+        <h2>Get Started!</h2>
+      </div>
+      <a class="text-link" href="/products/">See all products</a>
+    </div>
+
+    <div class="container product-grid">
+      {featuredProducts.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+</BaseLayout>

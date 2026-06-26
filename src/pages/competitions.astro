@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+
+const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/");
+---
+
+<BaseLayout title="Competitions | Pint-Sized Robotics">
+  <section class="page-hero">
+    <div class="container competition-grid">
+      <div>
+        <p class="section-label">Competitions</p>
+        <h1>Official competition rules and event updates.</h1>
+        <p>
+          The competition rulebook contains game rules, match format, and robot
+          design constraints.
+        </p>
+        <div class="info-note video-panel">
+          <div class="video-frame">
+            <iframe
+              src={promoVideoEmbedUrl}
+              title="Hexy Hustle reveal video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a class="button" href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">
+            Official competition rules
+          </a>
+        </div>
+      </div>
+
+      <div class="info-note schedule-panel">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&title=Pint-Sized%20Robotics%20Events&showDate=0&showTabs=0&showCalendars=0&showNav=0&mode=AGENDA&src=YTNmNzRhZjE2YzBiNDYzYTQxYjc1MzM5NDY1NjZmOWYwMjBhZWIxMzIyNzI4YzI3NGYzNDMyMGY3NDM5MmQzZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23e67c73"
+          title="Pint-Sized Robotics event schedule"
+          width="500"
+          height="600"
+          frameborder="0"
+          scrolling="no"
+          style="border: solid 1px #777"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .competition-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .schedule-panel {
+    padding: 1rem;
+  }
+
+  .video-panel {
+    margin: 1.25rem 0;
+    padding: 1rem;
+  }
+
+  .schedule-panel iframe {
+    display: block;
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .competition-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

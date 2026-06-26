@@ -1,0 +1,55 @@
+---
+import type { Product } from "../data/products";
+
+type Props = {
+  product: Product;
+};
+
+const { product } = Astro.props;
+---
+
+<article class="product-card">
+  <a href={`/products/${product.slug}/`} class="product-image-link">
+    <img
+      src={product.image}
+      alt={`${product.name} placeholder product image`}
+      class="product-image"
+      loading="lazy"
+    />
+  </a>
+
+  <div class="product-content">
+    <div class="product-meta">
+      <span class="pill">{product.category}</span>
+      <span class:list={["stock-badge", product.inStock ? "in-stock" : "out-of-stock"]}>
+        {product.inStock ? `In stock (${product.quantityAvailable})` : "Out of stock"}
+      </span>
+    </div>
+
+    <div class="product-copy">
+      <h3><a href={`/products/${product.slug}/`}>{product.name}</a></h3>
+      <p>{product.shortDescription}</p>
+    </div>
+
+    <div class="product-actions">
+      <p class="price">{product.priceDisplay}</p>
+      <div class="button-row">
+        <a class="button button-secondary" href={`/products/${product.slug}/`}>View details</a>
+        {
+          product.inStock ? (
+            <a
+              class="button"
+              href={product.stripePaymentLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Buy now
+            </a>
+          ) : (
+            <span class="button button-disabled" aria-disabled="true">Out of stock</span>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</article>

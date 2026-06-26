@@ -1,0 +1,40 @@
+---
+import { siteConfig } from "../config/site";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">Pintbotics</span>
+      <span>
+        <strong>{siteConfig.name}</strong>
+        <small>{siteConfig.tagline}</small>
+      </span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <ul class="nav-list">
+        {
+          siteConfig.nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  "nav-link",
+                  currentPath === item.href ||
+                  (item.href !== "/" && currentPath.startsWith(item.href))
+                    ? "active"
+                    : undefined
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
