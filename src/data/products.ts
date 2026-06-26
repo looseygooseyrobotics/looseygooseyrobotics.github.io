@@ -14,59 +14,45 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    slug: "brushless-motor",
-    name: "Brushless Motor",
-    category: "Motor",
-    priceDisplay: "$10.00",
-    shortDescription: "Brushed DC Motor",
+    slug: "hexyhustle-kitbot-assembled",
+    name: "Hexy Hustle Bot (Fully Assembled)",
+    category: "Kit",
+    priceDisplay: "$385.00",
+    shortDescription: "Competition ready robot",
     description:
-      "Brushed DC Motor 620 RPM, 12V, 4mm D shaft, M3 mounting holes.",
+      "Fully assembled Kitbot, ready to compete. Just pair a controller, and you are ready to go!",
     inStock: true,
-    quantityAvailable: 18,
+    quantityAvailable: 10,
     image: "/images/products/brushless-motor.svg",
-    stripePaymentLink: "https://buy.stripe.com/test_4gw7sM4placeholder01",
+    stripePaymentLink: "https://buy.stripe.com/test_7sY7sN1OG53RfdS2dJ8Ra00",
     featured: true
   },
   {
-    slug: "servo-kit",
-    name: "Servo Kit",
-    category: "Actuation",
-    priceDisplay: "$34.00",
-    shortDescription: "Reliable servo bundle for steering, grippers, and linkages.",
+    slug: "hexyhustle-kitbot",
+    name: "Hexy Hustle Bot (Kit)",
+    category: "Kit",
+    priceDisplay: "$325.00",
+    shortDescription: "Competition robot, some assembly required",
     description:
-      "A starter servo bundle with mounting hardware and extension leads for manipulators, turret indexing, and small mechanism control. Intended for teams that need a simple drop-in actuation option without sourcing separate accessories.",
+        "Hexy Hustle Kitbot with all prints, components, and hardware you need to assemble a competitino ready robot.",
     inStock: true,
-    quantityAvailable: 26,
-    image: "/images/products/servo-kit.svg",
-    stripePaymentLink: "https://buy.stripe.com/test_4gw7sM4placeholder02",
+    quantityAvailable: 10,
+    image: "/images/products/brushless-motor.svg",
+    stripePaymentLink: "https://buy.stripe.com/test_00w7sN50SfIv9Ty3hN8Ra01",
     featured: true
   },
   {
-    slug: "robot-brain",
-    name: "Robot Brain",
-    category: "Control",
-    priceDisplay: "$129.00",
-    shortDescription: "Central controller board for sensors, motion, and automation.",
+    slug: "electronics-kit",
+    name: "Electronics Kit",
+    category: "Kit",
+    priceDisplay: "195.00",
+    shortDescription: "Robot brain and Motors",
     description:
-      "A compact robotics controller with enough I/O for sensor integration, drivetrain control, and subsystem coordination. Suitable as the primary brain for classroom and competition robots where quick bring-up is more important than platform complexity.",
+        "The essentials for designing your own robot. A brain, battery, battery charger, and motors.",
     inStock: true,
-    quantityAvailable: 7,
-    image: "/images/products/robot-brain.svg",
-    stripePaymentLink: "https://buy.stripe.com/test_4gw7sM4placeholder03",
+    quantityAvailable: 10,
+    image: "/images/products/brushless-motor.svg",
+    stripePaymentLink: "https://buy.stripe.com/test_14A4gBgJA9k7aXCf0v8Ra02",
     featured: true
   },
-  {
-    slug: "lipo-battery",
-    name: "LiPo Battery",
-    category: "Power",
-    priceDisplay: "$48.00",
-    shortDescription: "High-discharge battery pack sized for small competitive robots.",
-    description:
-      "A rechargeable LiPo pack sized for compact robots that need steady output during short, high-load match cycles. Good for drive bases, arms, and practice rigs where weight and current delivery both matter.",
-    inStock: false,
-    quantityAvailable: 0,
-    image: "/images/products/lipo-battery.svg",
-    stripePaymentLink: "https://buy.stripe.com/test_4gw7sM4placeholder04",
-    featured: false
-  }
 ];
