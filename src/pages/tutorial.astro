@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+
+const assemblyVideoUrl = "https://www.youtube.com/embed/Egrp3yuLZys";
+const setupVideoUrl = "https://www.youtube.com/embed/Com644XKyWE";
+const githubRepoUrl = "https://github.com/Marsgate/hexyhustle-kitbot";
+const cadUrl =
+  "https://cad.onshape.com/documents/0fc45b39b4d57933cb774022/w/c29da13817e347fc61c06914/e/d3c1a49ca1396e0dae157f67";
+---
+
+<BaseLayout
+  title="Tutorial | Pintbotics"
+  description="Build resources, videos, CAD, and source links for the Hexy Hustle kitbot."
+>
+  <section class="page-hero tutorial-hero">
+    <div class="container narrow">
+      <p class="section-label">Tutorial</p>
+      <h1>Build the Hexy Hustle kitbot.</h1>
+      <p>
+        Use the walkthrough videos, source repo, and CAD together while you assemble,
+        wire, and tune the robot.
+      </p>
+    </div>
+  </section>
+
+  <section class="tutorial-section tutorial-links-section">
+    <div class="container">
+      <div class="section-header tutorial-header">
+        <div>
+          <h2>Resources</h2>
+        </div>
+      </div>
+
+      <div class="tutorial-links-grid">
+        <a class="resource-card" href={githubRepoUrl} target="_blank" rel="noreferrer">
+          <p class="panel-title">GitHub repo</p>
+          <p>Code, configuration, and reference files for the kitbot build.</p>
+        </a>
+
+        <a class="resource-card" href={cadUrl} target="_blank" rel="noreferrer">
+          <p class="panel-title">CAD</p>
+          <p>Mechanical reference for parts, placement, and assembly details.</p>
+        </a>
+
+        <a
+          class="resource-card"
+          href={siteConfig.competitionDiscordUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <p class="panel-title">Discord</p>
+          <p>Ask build questions, share progress, and get help from the community.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tutorial-section">
+    <div class="container">
+      <div class="section-header tutorial-header">
+        <div>
+          <p class="section-label">Video walkthroughs</p>
+          <h2>Follow along with videos to program and assemble your kit.</h2>
+        </div>
+      </div>
+
+      <div class="tutorial-video-grid">
+        <article class="info-note tutorial-card">
+          <p class="panel-title">Assembly walkthrough</p>
+          <div class="video-frame">
+            <iframe
+              src={assemblyVideoUrl}
+              title="Hexy Hustle kitbot assembly walkthrough"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </article>
+
+        <article class="info-note tutorial-card">
+          <p class="panel-title">Setup walkthrough</p>
+          <div class="video-frame">
+            <iframe
+              src={setupVideoUrl}
+              title="Hexy Hustle kitbot setup walkthrough"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tutorial-hero {
+    padding-bottom: 2.5rem;
+  }
+
+  .tutorial-section {
+    padding: 2rem 0 4.5rem;
+  }
+
+  .tutorial-header {
+    grid-template-columns: 1fr;
+  }
+
+  .tutorial-video-grid,
+  .tutorial-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .tutorial-links-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tutorial-card {
+    padding: 1rem;
+  }
+
+  .tutorial-card .panel-title,
+  .resource-card .panel-title {
+    margin: 0 0 1rem;
+  }
+
+  .resource-card {
+    display: block;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+
+  .resource-card p:last-child {
+    margin-bottom: 0;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  .resource-card:hover,
+  .resource-card:focus-visible {
+    border-color: var(--primary);
+  }
+
+  @media (max-width: 900px) {
+    .tutorial-video-grid,
+    .tutorial-links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

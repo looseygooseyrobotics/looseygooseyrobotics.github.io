@@ -9,6 +9,7 @@ export const siteConfig = {
   competitionDiscordUrl: "https://discord.com/invite/CW3pr6tqDv",
   nav: [
     { label: "Home", href: "/" },
+    { label: "Tutorial", href: "/tutorial/" },
     { label: "Products", href: "/products/" },
     { label: "Competitions", href: "/competitions/" }
   ],
