@@ -10,7 +10,6 @@ export const siteConfig = {
   nav: [
     { label: "Home", href: "/" },
     { label: "Tutorial", href: "/tutorial/" },
-    { label: "Products", href: "/products/" },
     { label: "Competitions", href: "/competitions/" }
   ],
   footerNote:
