@@ -1,14 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site";
-import { getFeaturedProducts } from "../lib/products";
-import ProductCard from "../components/ProductCard.astro";
 
-const featuredProducts = getFeaturedProducts();
 const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/");
 ---
 
-<BaseLayout title={`${siteConfig.name} | Robotics Parts Storefront`}>
+<BaseLayout title={`${siteConfig.name}`}>
   <section class="hero-section">
     <div class="container hero-grid">
       <div class="hero-copy">
