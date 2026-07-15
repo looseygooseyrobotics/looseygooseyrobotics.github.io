@@ -7,6 +7,7 @@ const currentPath = Astro.url.pathname;
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/">
+      <img src="/styles/images/logo.png" alt={siteConfig.name} class="logo" width="75px" height="75px" style="border-radius: 50%;" />
       <span>
         <strong>{siteConfig.name}</strong>
         <small>{siteConfig.tagline}</small>
