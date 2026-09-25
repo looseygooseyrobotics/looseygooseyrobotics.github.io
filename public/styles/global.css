@@ -50,7 +50,7 @@ main { min-height: 70vh; overflow: hidden; }
 .hero-grid, .info-grid, .product-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; }
 .hero-copy h1, .page-hero h1, .detail-copy h1 { font-size: clamp(2.8rem, 6vw, 5.25rem); line-height: .98; letter-spacing: -.06em; margin: .35rem 0 1.2rem; max-width: 11ch; }
 .hero-headline { display: grid; gap: .14em; max-width: 12ch; }
-.hero-headline span { display: block; padding: .14em .22em .19em; border: 2px solid var(--teal); border-radius: .12em; background: var(--teal); color: var(--navy-deep); box-shadow: .08em .08em 0 var(--orange); }
+.hero-headline span { display: block; padding: .14em .22em .19em; border: 2px solid var(--bg); border-radius: .12em; background: var(--bg); color: var(--navy-deep); box-shadow: .08em .08em 0 var(--orange); }
 .page-hero h1 { font-size: clamp(2.2rem, 4vw, 3.4rem); }
 .hero-text { max-width: 54ch; color: #e0f7f4; font-size: 1.13rem; }
 .hero-footnote { margin: 1.25rem 0 0; color: #d5e6e7; }
@@ -107,4 +107,4 @@ main { min-height: 70vh; overflow: hidden; }
 .site-footer { background: var(--navy-deep); color: white; margin-top: 0; }.footer-inner { grid-template-columns: 2fr 1fr; align-items: center; padding: 2rem 0 3rem; }.footer-inner p { color: #c2d3db; }.footer-title { color: white; font-size: 1.1rem; margin-bottom: .25rem; }.footer-links { justify-content: flex-end; }.footer-links a { color: white; }
 
 @media (max-width: 900px) { .hero-grid, .info-grid, .product-detail-grid, .section-header, .footer-inner, .header-inner, .about-grid, .competition-detail-grid { grid-template-columns: 1fr; }.nav-list, .footer-links { justify-content: flex-start; }.section-header > .text-link { justify-self: start; }.competition-facts, .roadmap-grid { grid-template-columns: 1fr; }.fact-card { min-height: 0; }.roadmap-card { min-height: 230px; }.about-photos { max-width: 440px; } }
-@media (max-width: 640px) { .hero-section, .page-hero, .info-section, .catalog-preview, .product-detail, .home-section { padding: 3.5rem 0; }.header-inner { gap: .4rem; }.brand .logo { width: 2.8rem; height: 2.8rem; }.brand small { display: none; }.nav-link { padding: .45rem .65rem; font-size: .9rem; }.button, .button-secondary, .button-disabled { width: 100%; }.button-row, .hero-actions { width: 100%; }.button-row > *, .hero-actions > * { flex: 1 1 100%; } }
+@media (max-width: 640px) { .hero-section, .page-hero, .info-section, .catalog-preview, .product-detail, .home-section { padding: 3.5rem 0; }.hero-section { overflow: hidden; }.header-inner { gap: .4rem; }.brand { margin-bottom: .75rem; }.brand .logo { width: 2.8rem; height: 2.8rem; }.brand small { display: none; }.nav-link { padding: .45rem .65rem; font-size: .9rem; }.button, .button-secondary, .button-disabled { width: 100%; }.button-row, .hero-actions { width: 100%; }.button-row > *, .hero-actions > * { flex: 1 1 100%; } }
