@@ -3,18 +3,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site";
 
 const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/");
+const imageBaseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={`${siteConfig.name}`}>
   <section class="hero-section">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Robotics, your way</p>
-        <h1>Build it. Drive it. Compete.</h1>
+        <p class="eyebrow">Robotics, but with antics and shenanigans</p>
+        <h1 class="hero-headline">
+          <span>Build it.</span>
+          <span>Rebuild it.</span>
+          <span>Somehow we made it worse.</span>
+        </h1>
         <p class="hero-text">
           Loosey Goosey Robotics makes it easy to get a team together, build a robot,
-          and play a game worth getting excited about—whether you're brand new or have
-          been competing for years.
+          and play a game. A very stupid game that involves inebriation, poor reffing, and bribery.
         </p>
         <div class="hero-actions">
           <a class="button" href="/get-started/">Start your team</a>
@@ -52,17 +56,17 @@ const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/"
         <article class="fact-card fact-card-teal">
           <span class="fact-number">2</span>
           <h3>Robots per alliance</h3>
-          <p>Pair up with another team and outscore the alliance across the field.</p>
+          <p>Pair up with another team and plan your strategy.</p>
         </article>
         <article class="fact-card fact-card-orange">
           <span class="fact-number">2:00</span>
           <h3>Driver-controlled match</h3>
-          <p>Every second is hands-on: no autonomous period, just smart driving.</p>
+          <p>Outscore your opponents with skillful driving.</p>
         </article>
         <article class="fact-card fact-card-navy">
-          <span class="fact-number">12″</span>
-          <h3>Starting footprint</h3>
-          <p>Start compact, then build for scoring, hanging, and the rush of the match.</p>
+          <span class="fact-number">12″x12″x12″</span>
+          <h3>Robot starting volume</h3>
+          <p>Just enough space to get creative without breaking the bank.</p>
         </article>
       </div>
       <div class="competition-detail-grid">
@@ -71,13 +75,8 @@ const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/"
           <p>
             Score hexes in alliance zones, place them on towers for extra value, and
             hang your robot for bonus points. It is simple to understand, satisfying to
-            master, and designed to reward clever robots and good teamwork.
+            master, and designed to reward good teamwork.
           </p>
-        </div>
-        <div class="competition-callout">
-          <p class="panel-title">Build your way</p>
-          <p>Build with qualifying custom electronics or a Loosey Goosey kit. The complete rulebook covers robot limits, game rules, and tournament play.</p>
-          <a class="text-link" href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">Explore the Hexy Hustle rulebook <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -94,7 +93,7 @@ const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/"
         <article class="roadmap-card">
           <span class="step-number">01</span>
           <h3>Start a team</h3>
-          <p>Gather your people, learn the game, and join a community ready to help you get moving.</p>
+          <p>Gather your people or go at it alone, learn the game, and join a community ready to help you learn the ropes.</p>
           <div class="card-links">
             <a href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">Game rules</a>
             <a href={siteConfig.competitionDiscordUrl} target="_blank" rel="noreferrer">Join Discord</a>
@@ -103,19 +102,17 @@ const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/"
         <article class="roadmap-card">
           <span class="step-number">02</span>
           <h3>Build a robot</h3>
-          <p>Use the kitbot, CAD, source code, and walkthroughs to turn a pile of parts into a competitor.</p>
+          <p>Buy parts, design your bot, and build your prototype.</p>
           <div class="card-links">
-            <a href="/get-started/">Build resources</a>
             <a href="/get-started/#video-walkthroughs">Watch walkthroughs</a>
           </div>
         </article>
         <article class="roadmap-card">
           <span class="step-number">03</span>
           <h3>Attend an event</h3>
-          <p>Test your robot, check the schedule, and bring your team to compete in qualifications and alliance selection.</p>
+          <p>Test your robot, check the schedule, and bring your team to compete.</p>
           <div class="card-links">
             <a href="/competitions/">View competitions</a>
-            <a href="/competitions/#event-schedule">Event schedule</a>
           </div>
         </article>
       </div>
@@ -127,23 +124,18 @@ const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/"
       <div class="about-photos">
         <img
           class="about-photo about-photo-couple"
-          src="/styles/images/couple.jpg"
-          alt="Micah Rassi and a companion smiling outdoors"
-        />
-        <img
-          class="about-photo about-photo-donut"
-          src="/styles/images/imdonut.jpg"
-          alt="Micah Rassi in front of an I'm Donut shop"
+          src={`${imageBaseUrl}styles/images/couple.jpg`}
+          alt=""
         />
       </div>
       <div class="about-copy">
         <p class="section-label">About us</p>
-        <h2 id="about-heading">Made by someone who never wanted to stop competing.</h2>
+        <h2 id="about-heading">Doing it for the love of the game!</h2>
         <p>
-          <strong>Micah Rassi, Founder</strong>, has spent 10 years in competitive educational robotics. A Purdue University graduate in Robotics Engineering Technology and former president of World Champion VEX U team Purdue SIGBots, Micah knows how much a great robotics season can mean.
+          <strong>Founder Micah Rassi</strong>, has spent over 10 years in competitive educational robotics. A Purdue University graduate in Robotics Engineering Technology and former president of World Champion VEX U team Purdue SIGBots.
         </p>
         <p>
-          After competing from high school through college, mentoring teams, and trying everything from battlebots to esports, Micah kept coming back to the same thing: building robots with friends, driving them, and competing. Loosey Goosey Robotics exists to make that feeling accessible to seasoned robotics veterans and first-time builders alike.
+          After competing from high school through college, mentoring teams, and trying everything from battlebots to esports, Micah kept coming back to the same thing: building robots with friends. Loosey Goosey Robotics exists to make that feeling accessible to seasoned robotics veterans and beginners alike.
         </p>
         <a class="button button-dark" href={siteConfig.founderLinkedInUrl} target="_blank" rel="noreferrer">Connect with Micah on LinkedIn</a>
       </div>
