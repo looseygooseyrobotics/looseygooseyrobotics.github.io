@@ -1,59 +1,65 @@
 # Loosey Goosey Robotics
 
-Static homepage built with Astro.
+The public website for Loosey Goosey Robotics, a friendly, hands-on robotics competition community. The site introduces the current game, **Hexy Hustle**, gives teams build resources, and publishes competition information.
 
-## Run locally
+Built with [Astro](https://astro.build/) and deployed as a static site through GitHub Pages.
 
-1. Install dependencies:
+## Pages
 
-   ```bash
-   npm install
-   ```
+- `/` — Competition overview, Hexy Hustle game highlights, team-starting steps, and founder information.
+- `/get-started/` — Kitbot build resources, CAD, source repository, Discord, and video walkthroughs.
+- `/competitions/` — Official rulebook link, game reveal video, and event schedule.
 
-2. Start the dev server:
+## Develop locally
 
-   ```bash
-   npm run dev
-   ```
+Prerequisite: a current Node.js LTS release and npm.
 
-3. Open the local URL Astro prints, usually `http://localhost:4321`.
+```bash
+npm install
+npm run dev
+```
+
+Astro prints the local address when the development server starts (normally `http://localhost:4321`).
+
+Other useful commands:
+
+```bash
+npm run build    # Create the production site in dist/
+npm run preview  # Preview the most recent production build
+```
+
+## Update site content
+
+Central, site-wide details live in [`src/config/site.ts`](src/config/site.ts), including the site name and tagline, navigation, game-reveal video, rulebook, Discord invite, and founder profile.
+
+Page content is kept close to its route:
+
+- `src/pages/index.astro`
+- `src/pages/get-started.astro`
+- `src/pages/competitions.astro`
+
+Shared header, footer, and document metadata are in `src/components/` and `src/layouts/BaseLayout.astro`. Global styling and image assets are under `public/styles/`.
 
 ## Project structure
 
 ```text
 .
 ├── public/
-│   ├── images/products/
-│   └── styles/global.css
+│   └── styles/
+│       ├── global.css
+│       └── images/
 ├── src/
-│   ├── components/
-│   ├── config/site.ts
-│   ├── layouts/
-│   └── pages/
+│   ├── components/       # Shared header and footer
+│   ├── config/site.ts    # Site-wide content and links
+│   ├── layouts/          # Shared HTML layout
+│   └── pages/            # Astro routes
+├── .github/workflows/    # GitHub Pages deployment
 ├── astro.config.mjs
 └── package.json
 ```
 
-## Customize branding and key links
+## Deployment
 
-Edit `src/config/site.ts` to change:
+Pushing to `main` triggers [the GitHub Actions workflow](.github/workflows/astro.yml). It installs dependencies with `npm ci`, builds Astro with the GitHub Pages site URL and base path, and deploys the resulting `dist/` directory.
 
-- site name
-- tagline
-- promo video URL
-- competition rules URL (currently the official Google Doc rulebook)
-- Discord invite URL
-- header navigation labels
-
-
-## Deploy
-
-This project builds to static files.
-
-Build command:
-
-```bash
-npm run build
-```
-
-Astro outputs the deployable static site to `dist/`.
+For a repository fork or a first-time deployment, enable **GitHub Pages** and select **GitHub Actions** as the source in the repository's Pages settings.

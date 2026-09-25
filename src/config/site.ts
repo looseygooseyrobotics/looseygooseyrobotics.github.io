@@ -1,10 +1,13 @@
 export const siteConfig = {
   name: "Loosey Goosey Robotics",
   tagline: "We're winging it.",
+  description:
+    "Build, drive, and compete with friends through approachable robotics competitions.",
   promoVideoUrl: "https://www.youtube.com/watch?v=wnM72m_owLs",
   competitionRulesUrl:
     "https://docs.google.com/document/d/142iKpfSxufPg2QC3WAg9Ao3pYToX6_ds-q26p8xsQHk/edit?usp=sharing",
   competitionDiscordUrl: "https://discord.com/invite/CW3pr6tqDv",
+  founderLinkedInUrl: "https://www.linkedin.com/in/micah-rassi",
   nav: [
     { label: "Home", href: "/" },
     { label: "Get Started", href: "/get-started/" },
