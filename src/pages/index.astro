@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site";
+import ZippyShowcase from "../components/ZippyShowcase.astro";
 
 const promoVideoEmbedUrl = siteConfig.promoVideoUrl.replace("watch?v=", "embed/");
 const imageBaseUrl = import.meta.env.BASE_URL;
@@ -80,6 +81,8 @@ const imageBaseUrl = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
+
+  <ZippyShowcase />
 
   <section class="home-section roadmap-section" aria-labelledby="roadmap-heading">
     <div class="container">

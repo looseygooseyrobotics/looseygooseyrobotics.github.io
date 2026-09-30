@@ -1,0 +1,847 @@
+---
+const releasesUrl = "https://github.com/Marsgate/zippy-manager/releases/latest";
+const repoUrl = "https://github.com/Marsgate/zippy-manager";
+const img = (name: string) => `/styles/images/zippy/${name}.webp`;
+
+// Each feature swaps the big screen, and some bring in the ref's tablet.
+const features = [
+  {
+    title: "Makes the schedule",
+    blurb:
+      "Type in your team names and Zippy Manager spits out a qualification schedule that avoids back-to-back matches and repeat partners.",
+    device: "Laptop",
+    screen: img("app-schedule"),
+    alt: "Zippy Manager schedule and rankings page",
+    theme: "light"
+  },
+  {
+    title: "Checks teams in",
+    blurb:
+      "Verify that the right teams showed up to play.",
+    device: "Laptop",
+    screen: img("app-checkin"),
+    alt: "Team check-in screen with red and blue alliance cards",
+    theme: "light"
+  },
+  {
+    title: "Runs the clock",
+    blurb:
+      "Audience display with scoring and penalties updating in real time.",
+    device: "TV",
+    screen: img("tv-timer"),
+    alt: "Audience display showing a match timer at 1:14",
+    tablet: img("ref-timer"),
+    tabletAlt: "Ref tablet with the match timer and pause button",
+    theme: "dark"
+  },
+  {
+    title: "Scores on a tablet",
+    blurb:
+      "Pair with a QR code to score matches from a phone or tablet.",
+    device: "TV",
+    screen: img("tv-final"),
+    alt: "Audience display showing the final score, 15 to 10",
+    tablet: img("ref-scoring"),
+    tabletAlt: "Ref tablet scoring screen with a map of the field",
+    theme: "dark"
+  },
+  {
+    title: "Shows the rankings",
+    blurb:
+      "Between matches the TV shows the rankings, the schedule, and who's on deck, to keep competitors and audience members informed.",
+    device: "TV",
+    screen: img("tv-rankings"),
+    alt: "Audience display showing qualification rankings",
+    theme: "dark"
+  },
+  {
+    title: "Runs alliance selection",
+    blurb:
+      "Captains pick partners in rank order and Zippy Manager keeps track of who is with who.",
+    device: "TV",
+    screen: img("tv-alliance"),
+    alt: "Audience display showing alliance selection in progress",
+    theme: "dark"
+  },
+  {
+    title: "Handles the bracket",
+    blurb:
+      "Zippy Manager makes the bracket at the click of a button. It determines seeding, byes, and match order automagically.",
+    device: "TV",
+    screen: img("tv-bracket"),
+    alt: "Audience display showing the elimination bracket",
+    theme: "dark"
+  }
+];
+
+const stats: { from: number; to: number; prefix?: string; postfix?: string; label: string }[] = [
+  { from: 0, to: 99, prefix: "Free", label: "Open source" },
+  { from: 0, to: 3, prefix: "", label: "Operating systems. Mac, Windows, and Linux" },
+  { from: 0, to:50, postfix: "%", label: "Chance of it working as intended" }
+];
+---
+
+<section class="zippy-section" id="zippy-manager" aria-labelledby="zippy-heading">
+  <div class="zippy-hexes" aria-hidden="true">
+    {Array.from({ length: 7 }, (_, i) => (
+      <svg class={`zippy-hex zippy-hex-${i + 1}`} viewBox="0 0 100 88">
+        <polygon points="25,2 75,2 98,44 75,86 25,86 2,44" />
+        <polygon points="38,26 62,26 74,44 62,62 38,62 26,44" />
+      </svg>
+    ))}
+  </div>
+
+  <div class="container zippy-inner">
+    <div class="zippy-top">
+      <div class="zippy-intro reveal">
+        <p class="section-label">Event software</p>
+        <h2 id="zippy-heading">It's like we almost know what we are doing!</h2>
+        <p>
+          Zippy Manager is a free desktop app that runs the tournament for you (minus choosing a date, providing a venue, coordinating transportation, and finding volunteers).
+        </p>
+      </div>
+      <div class="zippy-cta reveal">
+        <a class="button zippy-download" href={releasesUrl} target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" /></svg>
+          Download Zippy Manager
+        </a>
+        <p>
+          Mac, Windows, and Linux ·{" "}
+          <a href={repoUrl} target="_blank" rel="noreferrer">Source on GitHub</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="zippy-demo reveal" data-zippy-demo>
+      <ol class="zippy-features" role="list">
+        {features.map((feature, i) => (
+          <li>
+            <button
+              type="button"
+              class:list={["zippy-feature", { "is-active": i === 0 }]}
+              data-index={i}
+              aria-pressed={i === 0 ? "true" : "false"}
+            >
+              <span class="zippy-feature-num">{String(i + 1).padStart(2, "0")}</span>
+              <span class="zippy-feature-body">
+                <span class="zippy-feature-title">{feature.title}</span>
+                <span class="zippy-feature-blurb"><span>{feature.blurb}</span></span>
+              </span>
+              <span class="zippy-progress" aria-hidden="true"><span></span></span>
+            </button>
+          </li>
+        ))}
+      </ol>
+
+      <div class="zippy-stage">
+        <div class="zippy-screen" data-theme={features[0].theme}>
+          <div class="zippy-screen-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <em class="zippy-device-label">{features[0].device}</em>
+          </div>
+          <div class="zippy-screen-view">
+            {features.map((feature, i) => (
+              <img
+                class:list={["zippy-shot", { "is-active": i === 0 }]}
+                src={feature.screen}
+                alt={feature.alt}
+                width="1600"
+                height={feature.theme === "light" ? 1021 : 900}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                data-index={i}
+                data-theme={feature.theme}
+                data-device={feature.device}
+              />
+            ))}
+          </div>
+        </div>
+        <div class="zippy-stand" aria-hidden="true"></div>
+
+        <div class="zippy-tablet" aria-hidden="true">
+          {features.map((feature, i) =>
+            feature.tablet ? (
+              <img
+                class="zippy-tablet-shot"
+                src={feature.tablet}
+                alt={feature.tabletAlt}
+                width="700"
+                height="1007"
+                loading="lazy"
+                decoding="async"
+                data-index={i}
+              />
+            ) : null
+          )}
+        </div>
+      </div>
+    </div>
+
+    <dl class="zippy-stats">
+      {stats.map((stat) => (
+        <div class="zippy-stat reveal">
+          <dt>
+            <span
+              data-count-from={stat.from}
+              data-count-to={stat.to}
+              data-prefix={stat.prefix ?? ""}
+              data-postfix={stat.postfix ?? ""}
+            >
+              {stat.prefix}{stat.to}{stat.postfix}
+            </span>
+          </dt>
+          <dd>{stat.label}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<script>
+  const demo = document.querySelector<HTMLElement>("[data-zippy-demo]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const section = demo?.closest("section");
+
+  if (demo && section) {
+    const buttons = [...demo.querySelectorAll<HTMLButtonElement>(".zippy-feature")];
+    const shots = [...demo.querySelectorAll<HTMLImageElement>(".zippy-shot")];
+    const tablet = demo.querySelector<HTMLElement>(".zippy-tablet")!;
+    const tabletShots = [...demo.querySelectorAll<HTMLImageElement>(".zippy-tablet-shot")];
+    const screen = demo.querySelector<HTMLElement>(".zippy-screen")!;
+    const label = demo.querySelector<HTMLElement>(".zippy-device-label")!;
+    let active = 0;
+
+    const show = (index: number) => {
+      active = index;
+      buttons.forEach((button, i) => {
+        const on = i === index;
+        button.classList.toggle("is-active", on);
+        button.setAttribute("aria-pressed", String(on));
+        // Restart the progress animation on the newly active item.
+        const bar = button.querySelector<HTMLElement>(".zippy-progress span")!;
+        bar.style.animation = "none";
+        void bar.offsetWidth;
+        bar.style.animation = "";
+      });
+      shots.forEach((shot, i) => shot.classList.toggle("is-active", i === index));
+      const tabletShot = tabletShots.find((shot) => Number(shot.dataset.index) === index);
+      tabletShots.forEach((shot) => shot.classList.toggle("is-active", shot === tabletShot));
+      tablet.classList.toggle("is-visible", Boolean(tabletShot));
+      screen.dataset.theme = shots[index].dataset.theme;
+      label.textContent = tabletShot ? "TV + ref tablet" : shots[index].dataset.device ?? "";
+    };
+
+    const stage = demo.querySelector<HTMLElement>(".zippy-stage")!;
+    buttons.forEach((button, i) =>
+      button.addEventListener("click", () => {
+        show(i);
+        // On narrow screens the stage sits above the list; bring it back into view.
+        if (stage.getBoundingClientRect().bottom < 80) {
+          stage.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+        }
+      })
+    );
+
+    // Each progress bar's animation doubles as the autoplay timer.
+    demo.addEventListener("animationend", (event) => {
+      if ((event.target as HTMLElement).closest(".zippy-progress")) {
+        show((active + 1) % buttons.length);
+      }
+    });
+
+    if (reduceMotion) {
+      demo.classList.add("is-static");
+    }
+
+    // Only autoplay while the demo is on screen.
+    new IntersectionObserver(
+      ([entry]) => demo.classList.toggle("is-playing", entry.isIntersecting && !reduceMotion),
+      { threshold: 0.35 }
+    ).observe(demo);
+  }
+
+  // Fade sections in as they scroll into view, and run the stat counters once.
+  const revealTargets = document.querySelectorAll<HTMLElement>(".zippy-section .reveal");
+  const counters = document.querySelectorAll<HTMLElement>("[data-count-to]");
+
+  const runCounter = (el: HTMLElement) => {
+    const from = Number(el.dataset.countFrom);
+    const to = Number(el.dataset.countTo);
+    const prefix = el.dataset.prefix ?? "";
+    const postfix = el.dataset.postfix ?? "";
+    const start = performance.now();
+    const duration = 1400;
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = prefix + Math.round(from + (to - from) * eased) + postfix;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((el) => el.classList.add("is-revealed"));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          el.classList.add("is-revealed");
+          el.querySelectorAll<HTMLElement>("[data-count-to]").forEach(runCounter);
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    revealTargets.forEach((el) => observer.observe(el));
+    counters.forEach(
+      (el) => (el.textContent = (el.dataset.prefix ?? "") + el.dataset.countFrom + (el.dataset.postfix ?? ""))
+    );
+  }
+</script>
+
+<style>
+  .zippy-section {
+    position: relative;
+    padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+    background:
+      radial-gradient(60rem 30rem at 85% 0%, rgba(0, 169, 165, 0.22), transparent 60%),
+      radial-gradient(50rem 28rem at 0% 100%, rgba(255, 112, 67, 0.2), transparent 60%),
+      var(--navy-deep);
+    color: white;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .zippy-inner {
+    position: relative;
+    width: min(1240px, calc(100% - 2rem));
+  }
+
+  /* Drifting hexes in the background. */
+  .zippy-hexes {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .zippy-hex {
+    position: absolute;
+    width: 7rem;
+    fill: none;
+    stroke-width: 2.5;
+    opacity: 0.35;
+    animation: hex-drift 22s ease-in-out infinite alternate;
+  }
+
+  .zippy-hex:nth-child(odd) {
+    stroke: var(--teal);
+  }
+
+  .zippy-hex:nth-child(even) {
+    stroke: var(--orange);
+  }
+
+  .zippy-hex-1 { top: 6%; left: 4%; width: 5rem; animation-duration: 19s; }
+  .zippy-hex-2 { top: 14%; right: 8%; width: 8rem; animation-duration: 26s; animation-delay: -6s; }
+  .zippy-hex-3 { top: 48%; left: -2%; width: 9rem; animation-duration: 30s; animation-delay: -12s; }
+  .zippy-hex-4 { bottom: 10%; right: 3%; width: 6rem; animation-duration: 21s; animation-delay: -3s; }
+  .zippy-hex-5 { bottom: 4%; left: 30%; width: 4rem; animation-duration: 17s; animation-delay: -9s; }
+  .zippy-hex-6 { top: 3%; left: 46%; width: 3.5rem; animation-duration: 24s; animation-delay: -15s; }
+  .zippy-hex-7 { top: 62%; right: 34%; width: 3rem; animation-duration: 28s; animation-delay: -4s; }
+
+  @keyframes hex-drift {
+    from { transform: translate(0, 0) rotate(0deg); }
+    to { transform: translate(2.5rem, -3rem) rotate(60deg); }
+  }
+
+  /* Intro */
+  .zippy-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 2rem 3rem;
+    align-items: end;
+  }
+
+  .zippy-intro h2 {
+    margin: 0.3rem 0 1rem;
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+  }
+
+  .zippy-intro p:last-child {
+    max-width: 60ch;
+    margin: 0;
+    color: #c9dbe3;
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+
+  .zippy-cta {
+    justify-self: end;
+    text-align: right;
+  }
+
+  .zippy-cta p {
+    margin: 0.85rem 0 0;
+    color: #9fb6c3;
+    font-size: 0.92rem;
+  }
+
+  .zippy-cta p a {
+    color: white;
+    font-weight: 700;
+  }
+
+  .zippy-download {
+    gap: 0.6rem;
+    padding-inline: 1.4rem;
+    box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.55);
+    animation: cta-pulse 2.8s ease-out infinite;
+  }
+
+  .zippy-download svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @keyframes cta-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.55); }
+    70%, 100% { box-shadow: 0 0 0 1rem rgba(255, 112, 67, 0); }
+  }
+
+  /* Demo: feature rail + stage */
+  .zippy-demo {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.65fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .zippy-features {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .zippy-feature {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    width: 100%;
+    padding: 0.8rem 1rem 0.95rem;
+    border: 1px solid transparent;
+    border-radius: 0.8rem;
+    background: transparent;
+    color: #9fb6c3;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .zippy-feature:hover,
+  .zippy-feature:focus-visible {
+    color: white;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .zippy-feature:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  .zippy-feature.is-active {
+    color: white;
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .zippy-feature-num {
+    padding-top: 0.15rem;
+    color: var(--orange);
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .zippy-feature-title {
+    display: block;
+    font-size: 1.08rem;
+    font-weight: 800;
+  }
+
+  /* Blurbs expand under the active feature. */
+  .zippy-feature-blurb {
+    display: grid;
+    grid-template-rows: 0fr;
+    color: #c9dbe3;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    overflow: hidden;
+    opacity: 0;
+    transition: grid-template-rows 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+  }
+
+  .zippy-feature-blurb > span {
+    min-height: 0;
+  }
+
+  .zippy-feature.is-active .zippy-feature-blurb {
+    grid-template-rows: 1fr;
+    margin-top: 0.4rem;
+    opacity: 1;
+  }
+
+  .zippy-progress {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.35rem;
+    height: 3px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0;
+  }
+
+  .zippy-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--teal), var(--orange));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .zippy-feature.is-active .zippy-progress {
+    opacity: 1;
+  }
+
+  .zippy-feature.is-active .zippy-progress span {
+    animation: feature-progress 6.5s linear forwards;
+    animation-play-state: paused;
+  }
+
+  .zippy-demo.is-playing:not(:hover):not(:focus-within) .zippy-feature.is-active .zippy-progress span {
+    animation-play-state: running;
+  }
+
+  .zippy-demo.is-static .zippy-progress {
+    display: none;
+  }
+
+  @keyframes feature-progress {
+    to { transform: scaleX(1); }
+  }
+
+  /* The stage: a screen with a bezel, plus a tablet that slides in. */
+  .zippy-stage {
+    position: relative;
+    padding-bottom: 2.4rem;
+    perspective: 1600px;
+  }
+
+  .zippy-screen {
+    position: relative;
+    z-index: 1;
+    padding: 0 0.65rem 0.65rem;
+    border-radius: 1.1rem;
+    background: #1b2733;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 40px 80px -20px rgba(0, 0, 0, 0.65),
+      0 0 120px -30px rgba(0, 169, 165, 0.55);
+    transform: rotateY(-7deg) rotateX(3deg);
+    transform-origin: 60% 50%;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+  }
+
+  .zippy-screen[data-theme="light"] {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 40px 80px -20px rgba(0, 0, 0, 0.65),
+      0 0 120px -30px rgba(255, 112, 67, 0.55);
+  }
+
+  .zippy-stage:hover .zippy-screen {
+    transform: rotateY(-2deg) rotateX(1deg);
+  }
+
+  .zippy-screen-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    height: 2rem;
+    padding-inline: 0.35rem;
+  }
+
+  .zippy-screen-bar span {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: #ff5f57;
+  }
+
+  .zippy-screen-bar span:nth-child(2) { background: #febc2e; }
+  .zippy-screen-bar span:nth-child(3) { background: #28c840; }
+
+  .zippy-device-label {
+    margin-left: auto;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #c9dbe3;
+    font-size: 0.72rem;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .zippy-screen-view {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 0.45rem;
+    background: #081b2e;
+    transition: background 0.6s ease;
+  }
+
+  .zippy-screen[data-theme="light"] .zippy-screen-view {
+    background: #f5f3ee;
+  }
+
+  .zippy-shot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(6px);
+    transition: opacity 0.7s ease, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.7s ease;
+  }
+
+  .zippy-shot.is-active {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  .zippy-stand {
+    width: 22%;
+    height: 1.4rem;
+    margin: -0.2rem auto 0;
+    border-radius: 0 0 0.6rem 0.6rem;
+    background: linear-gradient(#1b2733, #0f1822);
+    transform: rotateY(-7deg);
+  }
+
+  .zippy-tablet {
+    position: absolute;
+    z-index: 2;
+    right: -1.5rem;
+    bottom: -0.5rem;
+    width: 29%;
+    aspect-ratio: 700 / 1007;
+    padding: 0.45rem;
+    border-radius: 1.2rem;
+    background: #111a24;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 30px 60px -10px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: translate(2rem, 3rem) rotate(8deg);
+    transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.3, 1.4, 0.4, 1);
+    pointer-events: none;
+  }
+
+  .zippy-tablet.is-visible {
+    opacity: 1;
+    transform: translate(0, 0) rotate(4deg);
+    animation: tablet-float 5s ease-in-out 0.8s infinite;
+  }
+
+  @keyframes tablet-float {
+    0%, 100% { transform: translate(0, 0) rotate(4deg); }
+    50% { transform: translate(0, -0.6rem) rotate(3deg); }
+  }
+
+  .zippy-tablet-shot {
+    position: absolute;
+    inset: 0.45rem;
+    width: calc(100% - 0.9rem);
+    height: calc(100% - 0.9rem);
+    border-radius: 0.8rem;
+    object-fit: cover;
+    object-position: top;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .zippy-tablet-shot.is-active {
+    opacity: 1;
+  }
+
+  /* Stats */
+  .zippy-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin: clamp(3rem, 6vw, 4.5rem) 0 0;
+  }
+
+  .zippy-stat {
+    padding: 1.3rem 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .zippy-stat:nth-child(2) { transition-delay: 0.1s; }
+  .zippy-stat:nth-child(3) { transition-delay: 0.2s; }
+
+  .zippy-stat dt {
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .zippy-stat dt span {
+    display: inline-block;
+    padding-right: 0.05em;
+    background: linear-gradient(90deg, #70e0d8, #ff9d75);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .zippy-stat dd {
+    margin: 0.6rem 0 0;
+    color: #c9dbe3;
+    line-height: 1.5;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  .zippy-cta.reveal { transition-delay: 0.15s; }
+
+  @media (max-width: 1000px) {
+    .zippy-demo {
+      grid-template-columns: 1fr;
+    }
+
+    .zippy-stage {
+      order: -1;
+      margin-inline: 0.5rem;
+    }
+
+    .zippy-screen,
+    .zippy-stage:hover .zippy-screen,
+    .zippy-stand {
+      transform: none;
+    }
+
+    .zippy-tablet {
+      right: -0.5rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .zippy-top {
+      grid-template-columns: 1fr;
+    }
+
+    .zippy-cta {
+      justify-self: start;
+      text-align: left;
+    }
+
+    .zippy-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .zippy-hex {
+      opacity: 0.15;
+    }
+
+    .zippy-download {
+      width: 100%;
+    }
+
+    .zippy-screen {
+      padding: 0 0.35rem 0.35rem;
+      border-radius: 0.7rem;
+    }
+
+    .zippy-screen-bar {
+      height: 1.5rem;
+    }
+
+    .zippy-screen-bar span {
+      width: 0.45rem;
+      height: 0.45rem;
+    }
+
+    .zippy-tablet {
+      width: 32%;
+      padding: 0.25rem;
+      border-radius: 0.7rem;
+    }
+
+    .zippy-tablet-shot {
+      inset: 0.25rem;
+      width: calc(100% - 0.5rem);
+      height: calc(100% - 0.5rem);
+      border-radius: 0.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .zippy-hex,
+    .zippy-download,
+    .zippy-tablet.is-visible {
+      animation: none;
+    }
+
+    .zippy-shot,
+    .zippy-tablet,
+    .zippy-screen,
+    .reveal {
+      transition: none;
+    }
+
+    .zippy-shot {
+      transform: none;
+      filter: none;
+    }
+  }
+</style>
