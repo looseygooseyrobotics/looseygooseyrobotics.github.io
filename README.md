@@ -9,6 +9,7 @@ Built with [Astro](https://astro.build/) and deployed as a static site through G
 - `/` — Competition overview, Hexy Hustle game highlights, team-starting steps, and founder information.
 - `/get-started/` — Kitbot build resources, CAD, source repository, Discord, and video walkthroughs.
 - `/competitions/` — Official rulebook link, game reveal video, and event schedule.
+- `/event-resources/` — Field CAD, Zippy Manager event software download, and event hosting recommendations.
 
 ## Develop locally
 
@@ -37,6 +38,7 @@ Page content is kept close to its route:
 - `src/pages/index.astro`
 - `src/pages/get-started.astro`
 - `src/pages/competitions.astro`
+- `src/pages/event-resources.astro`
 
 Shared header, footer, and document metadata are in `src/components/` and `src/layouts/BaseLayout.astro`. Global styling and image assets are under `public/styles/`.
 

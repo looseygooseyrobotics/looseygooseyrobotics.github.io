@@ -11,6 +11,7 @@ export const siteConfig = {
   nav: [
     { label: "Home", href: "/" },
     { label: "Get Started", href: "/get-started/" },
-    { label: "Competitions", href: "/competitions/" }
+    { label: "Competitions", href: "/competitions/" },
+    { label: "Event Resources", href: "/event-resources/" }
   ]
 } as const;

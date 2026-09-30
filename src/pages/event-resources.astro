@@ -1,0 +1,435 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+
+const zippyManagerReleasesUrl = "https://github.com/Marsgate/zippy-manager/releases";
+
+const fieldDownloads = [
+  {
+    title: "Full field assembly",
+    format: "STEP · 1.5 MB",
+    href: "/downloads/hexy-hustle-field-assembly.step",
+    description: "The complete field: perimeter, towers, hanging bar, and hex positions."
+  },
+  {
+    title: "Hex",
+    format: "STL · 120 KB",
+    href: "/downloads/hex.stl",
+    description: "A complete game hex, for reference or single-piece printing."
+  },
+  {
+    title: "Hex half",
+    format: "STL · 60 KB",
+    href: "/downloads/hex-half.stl",
+    description: "Half of a hex. Print two and glue them together for the best finish."
+  }
+];
+
+const fieldSpecs = [
+  { label: "Field", value: "4' × 8'" },
+  { label: "Hexes", value: '12 at 3.5" × 3.5" × 0.5"' },
+  { label: "Scoring zones", value: '10" × 48"' },
+  { label: "Starting zones", value: '14" × 48"' }
+];
+
+const fieldViews = [
+  { src: "/styles/images/field/field-isometric.png", caption: "Starting configuration" },
+  { src: "/styles/images/field/field-top.png", caption: "Top view" },
+  { src: "/styles/images/field/hanging-bar.png", caption: "Hanging bar" },
+  { src: "/styles/images/field/tower.png", caption: "Tower" },
+  { src: "/styles/images/field/scoring-zone.png", caption: "Scoring zone" },
+  { src: "/styles/images/field/starting-zone.png", caption: "Starting zone" }
+];
+
+const hostingTips = [
+  {
+    title: "Get enough teams",
+    body: "Events need at least 4 teams, but aim for 10 or more. It gives teams time between matches and a better variety of match ups."
+  },
+  {
+    title: "Set up a pit area",
+    body: "Provide plenty of table space and power strips so competitors can work on their robots and charge their batteries."
+  },
+  {
+    title: "Staff the field",
+    body: "Every event needs a dedicated head ref. Add extra refs and scorekeepers if you can to reduce missed calls and speed up match cycles."
+  },
+  {
+    title: "Choose a knowledgeable ref",
+    body: "Your head ref should know the game well and be familiar with the ins and outs of the game manual."
+  },
+  {
+    title: "Put the event on screen",
+    body: "Connect a large TV to a PC or laptop running Zippy Manager. It generates match schedules, scores matches, and builds the elimination bracket."
+  },
+  {
+    title: "Bring the sound",
+    body: "Use a speaker system for game sounds, announcements, live commentary, and interviews. A dedicated MC makes the event far more fun for spectators."
+  },
+  {
+    title: "Music and libations",
+    body: "🍻 🎶"
+  },
+  {
+    title: "Practice makes perfect",
+    body: "Give teams time to practice before the event starts to test their robots (and even during the event if you have a spare field). It reduces the amount of delays if teams can work out the kinks beforehand."
+  },
+  {
+    title: "Get on with it",
+    body: "Start on time, have someone wrangling teams to the field for their matches, skip a match and come back if a team needs to do major repairs. A typical 10 team event takes about 3 hours, not including setup/teardown and practice time."
+  }
+];
+
+const printSettings = [
+  "0.2 mm layer height",
+  "2 perimeters",
+  "5 top shell layers",
+  "3 bottom shell layers",
+  "15% grid infill",
+  "No supports"
+];
+---
+
+<BaseLayout
+  title="Event Resources"
+  description="Field CAD, event management software, and hosting recommendations for Hexy Hustle events."
+>
+  <section class="page-hero resources-hero">
+    <div class="container narrow">
+      <p class="section-label">Hosting</p>
+      <h1>Run your own Hexy Hustle event.</h1>
+      <p>
+        Everything you need to host a competition.
+      </p>
+    </div>
+  </section>
+
+  <section class="resources-section">
+    <div class="container">
+      <div class="section-header resources-header">
+        <div>
+          <h2>Event hosting resources</h2>
+        </div>
+      </div>
+
+      <div class="resources-grid">
+        <a class="resource-card" href="#field">
+          <p class="panel-title">Field CAD</p>
+          <p>The full field model and printable hexes, with build references.</p>
+        </a>
+
+        <a class="resource-card" href={zippyManagerReleasesUrl} target="_blank" rel="noreferrer">
+          <p class="panel-title">Zippy Manager</p>
+          <p>
+            Download the desktop app for match timing, schedules, brackets, alliance
+            selection, and the live audience display.
+          </p>
+        </a>
+
+        <a
+          class="resource-card"
+          href={siteConfig.competitionDiscordUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <p class="panel-title">Discord</p>
+          <p>Ask hosting questions and coordinate with other event organizers.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="resources-section" id="field">
+    <div class="container">
+      <div class="section-header resources-header">
+        <div>
+          <p class="section-label">Field</p>
+          <h2>Build the Hexy Hustle field.</h2>
+        </div>
+      </div>
+
+      <dl class="field-specs">
+        {
+          fieldSpecs.map((spec) => (
+            <div class="field-spec">
+              <dt>{spec.label}</dt>
+              <dd>{spec.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="resources-grid">
+        {
+          fieldDownloads.map((file) => (
+            <a class="resource-card" href={file.href} download>
+              <p class="panel-title">{file.title}</p>
+              <p class="file-format">{file.format}</p>
+              <p>{file.description}</p>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="field-gallery">
+        {
+          fieldViews.map((view) => (
+            <figure class="info-note field-view">
+              <img src={view.src} alt={`Hexy Hustle field: ${view.caption.toLowerCase()}`} loading="lazy" />
+              <figcaption>{view.caption}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+
+      <p class="field-note">
+        Full field dimensions and rules are in the{" "}
+        <a href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">game manual</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="resources-section" id="printing-hexes">
+    <div class="container">
+      <div class="section-header resources-header">
+        <div>
+          <p class="section-label">Game pieces</p>
+          <h2>3D print the hexes.</h2>
+        </div>
+      </div>
+
+      <div class="print-grid">
+        <article class="info-note">
+          <p class="panel-title">Printing hex halves</p>
+          <p>
+            For the best finish, print two hex halves with the patterned side down on a
+            smooth build plate. Then glue the two flat sides together.
+          </p>
+          <figure class="print-figure">
+            <img
+              src="/styles/images/field/hex-half-orientation.png"
+              alt="A hex half in the slicer, lying flat with the patterned side against the build plate"
+              loading="lazy"
+            />
+            <figcaption>Hex half oriented in the slicer, pattern side down.</figcaption>
+          </figure>
+        </article>
+
+        <article class="info-note">
+          <p class="panel-title">Print settings</p>
+          <p>
+            On a Bambu printer, use the <strong>0.20mm Standard</strong> profile. For other
+            printers:
+          </p>
+          <ul class="settings-list">
+            {printSettings.map((setting) => <li>{setting}</li>)}
+          </ul>
+          <figure class="print-figure">
+            <img src="/styles/images/field/hex.png" alt="A finished game hex" loading="lazy" />
+            <figcaption>Finished hex.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="resources-section" id="hosting-recommendations">
+    <div class="container">
+      <div class="section-header resources-header">
+        <div>
+          <p class="section-label">Recommendations</p>
+          <h2>Tips for hosting a great event.</h2>
+        </div>
+      </div>
+
+      <div class="print-grid">
+        {
+          hostingTips.map((tip) => (
+            <article class="info-note">
+              <p class="panel-title">{tip.title}</p>
+              <p>{tip.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .resources-hero {
+    padding-bottom: 2.5rem;
+  }
+
+  .resources-section {
+    padding: 2rem 0 4.5rem;
+    scroll-margin-top: 5rem;
+  }
+
+  .resources-header {
+    grid-template-columns: 1fr;
+  }
+
+  .resources-grid,
+  .field-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .field-gallery {
+    margin-top: 1.5rem;
+  }
+
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .resource-card .panel-title,
+  .info-note .panel-title {
+    margin: 0 0 1rem;
+  }
+
+  .info-note p {
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  .info-note > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .resource-card {
+    display: block;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+  }
+
+  .resource-card p:last-child {
+    margin-bottom: 0;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  .resource-card .file-format {
+    margin: -0.5rem 0 0.75rem;
+    color: var(--orange);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .resource-card:hover,
+  .resource-card:focus-visible {
+    border-color: var(--primary);
+  }
+
+  .field-specs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .field-spec {
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--orange);
+  }
+
+  .field-spec dt {
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .field-spec dd {
+    margin: 0.3rem 0 0;
+    font-weight: 700;
+  }
+
+  .field-view {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .field-view img {
+    flex: 1;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: white;
+    border-radius: 0.35rem;
+  }
+
+  .field-view figcaption,
+  .print-figure figcaption {
+    margin-top: 0.75rem;
+    color: var(--text-soft);
+    font-weight: 650;
+  }
+
+  .field-note {
+    margin: 1.5rem 0 0;
+    color: var(--text-soft);
+  }
+
+  .settings-list {
+    margin: 0 0 1.25rem;
+    padding-left: 1.2rem;
+    color: var(--text-soft);
+    line-height: 1.8;
+  }
+
+  .print-figure {
+    margin: 1.25rem 0 0;
+  }
+
+  .print-figure img {
+    display: block;
+    width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    background: white;
+    border-radius: 0.35rem;
+  }
+
+  @media (max-width: 900px) {
+    .resources-grid,
+    .print-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .field-gallery,
+    .field-specs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .resources-hero .container.narrow {
+      width: min(760px, calc(100% - 2rem));
+    }
+
+    .resources-hero .container,
+    .resources-section .container {
+      padding-inline: 0.5rem;
+    }
+
+    .field-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .field-view img {
+      aspect-ratio: auto;
+    }
+  }
+</style>

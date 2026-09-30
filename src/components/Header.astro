@@ -14,7 +14,19 @@ const currentPath = Astro.url.pathname;
       </span>
     </a>
 
-    <nav aria-label="Primary navigation">
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-controls="primary-nav"
+      aria-expanded="false"
+      aria-label="Open menu"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
       <ul class="nav-list">
         {
           siteConfig.nav.map((item) => (
@@ -38,3 +50,96 @@ const currentPath = Astro.url.pathname;
     </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const header = document.querySelector(".site-header");
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    header?.classList.toggle("nav-open", open);
+  });
+</script>
+
+<style>
+  .header-inner {
+    grid-template-columns: auto 1fr;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0;
+    }
+
+    .brand {
+      margin-bottom: 0;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.3rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0 0.65rem;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .nav-toggle:hover,
+    .nav-toggle:focus-visible {
+      background: rgba(16, 42, 67, 0.08);
+    }
+
+    .nav-toggle-bar {
+      display: block;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--navy);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-open .nav-toggle-bar:nth-child(1) {
+      transform: translateY(calc(0.3rem + 2px)) rotate(45deg);
+    }
+
+    .nav-open .nav-toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-open .nav-toggle-bar:nth-child(3) {
+      transform: translateY(calc(-0.3rem - 2px)) rotate(-45deg);
+    }
+
+    .primary-nav {
+      display: none;
+      flex-basis: 100%;
+      padding-top: 0.75rem;
+    }
+
+    .nav-open .primary-nav {
+      display: block;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .nav-link {
+      display: block;
+    }
+  }
+</style>
