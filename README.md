@@ -42,13 +42,19 @@ Page content is kept close to its route:
 
 Shared header, footer, and document metadata are in `src/components/` and `src/layouts/BaseLayout.astro`. Global styling and image assets are under `public/styles/`.
 
+## Design system
+
+Colors, type, spacing, radii and shadows are CSS variables in [`public/styles/tokens.css`](public/styles/tokens.css). Use those instead of hard-coded values. Voice, usage rules and component guidelines are in [`design-system/`](design-system/README.md).
+
 ## Project structure
 
 ```text
 .
+├── design-system/         # Brand book and component guidelines
 ├── public/
 │   └── styles/
-│       ├── global.css
+│       ├── tokens.css    # Design tokens
+│       ├── global.css    # Shared component styles
 │       └── images/
 ├── src/
 │   ├── components/       # Shared header and footer

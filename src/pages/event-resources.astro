@@ -270,7 +270,7 @@ const printSettings = [
   .field-gallery {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: var(--space-5);
   }
 
   .field-gallery {
@@ -283,7 +283,6 @@ const printSettings = [
     gap: 1.5rem;
   }
 
-  .resource-card .panel-title,
   .info-note .panel-title {
     margin: 0 0 1rem;
   }
@@ -297,34 +296,6 @@ const printSettings = [
     margin-bottom: 0;
   }
 
-  .resource-card {
-    display: block;
-    padding: 1.25rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow);
-    text-decoration: none;
-  }
-
-  .resource-card p:last-child {
-    margin-bottom: 0;
-    color: var(--text-soft);
-    line-height: 1.6;
-  }
-
-  .resource-card .file-format {
-    margin: -0.5rem 0 0.75rem;
-    color: var(--orange);
-    font-size: 0.85rem;
-    font-weight: 700;
-  }
-
-  .resource-card:hover,
-  .resource-card:focus-visible {
-    border-color: var(--primary);
-  }
-
   .field-specs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -333,7 +304,7 @@ const printSettings = [
   }
 
   .field-spec {
-    padding: 1rem 1.25rem;
+    padding: var(--space-3) var(--space-4);
     border-left: 3px solid var(--orange);
   }
 
@@ -362,8 +333,8 @@ const printSettings = [
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: contain;
-    background: white;
-    border-radius: 0.35rem;
+    background: var(--surface);
+    border-radius: var(--radius-xs);
   }
 
   .field-view figcaption,
@@ -394,8 +365,8 @@ const printSettings = [
     width: 100%;
     max-height: 280px;
     object-fit: contain;
-    background: white;
-    border-radius: 0.35rem;
+    background: var(--surface);
+    border-radius: var(--radius-xs);
   }
 
   @media (max-width: 900px) {

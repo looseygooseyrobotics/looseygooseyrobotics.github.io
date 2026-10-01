@@ -310,7 +310,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
       radial-gradient(60rem 30rem at 85% 0%, rgba(0, 169, 165, 0.22), transparent 60%),
       radial-gradient(50rem 28rem at 0% 100%, rgba(255, 112, 67, 0.2), transparent 60%),
       var(--navy-deep);
-    color: white;
+    color: var(--on-navy);
     overflow: hidden;
     isolation: isolate;
   }
@@ -376,7 +376,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   .zippy-intro p:last-child {
     max-width: 60ch;
     margin: 0;
-    color: #c9dbe3;
+    color: var(--on-navy-deep-soft);
     font-size: 1.08rem;
     line-height: 1.65;
   }
@@ -388,12 +388,12 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
 
   .zippy-cta p {
     margin: 0.85rem 0 0;
-    color: #9fb6c3;
+    color: var(--on-navy-deep-muted);
     font-size: 0.92rem;
   }
 
   .zippy-cta p a {
-    color: white;
+    color: var(--on-navy);
     font-weight: 700;
   }
 
@@ -444,9 +444,9 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
     width: 100%;
     padding: 0.8rem 1rem 0.95rem;
     border: 1px solid transparent;
-    border-radius: 0.8rem;
+    border-radius: var(--radius-lg);
     background: transparent;
-    color: #9fb6c3;
+    color: var(--on-navy-deep-muted);
     font: inherit;
     text-align: left;
     cursor: pointer;
@@ -456,8 +456,8 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
 
   .zippy-feature:hover,
   .zippy-feature:focus-visible {
-    color: white;
-    background: rgba(255, 255, 255, 0.04);
+    color: var(--on-navy);
+    background: var(--glass-fill);
   }
 
   .zippy-feature:focus-visible {
@@ -466,8 +466,8 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   }
 
   .zippy-feature.is-active {
-    color: white;
-    background: rgba(255, 255, 255, 0.07);
+    color: var(--on-navy);
+    background: var(--glass-fill-active);
     border-color: rgba(255, 255, 255, 0.12);
   }
 
@@ -489,7 +489,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   .zippy-feature-blurb {
     display: grid;
     grid-template-rows: 0fr;
-    color: #c9dbe3;
+    color: var(--on-navy-deep-soft);
     font-size: 0.95rem;
     line-height: 1.55;
     overflow: hidden;
@@ -561,7 +561,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
     z-index: 1;
     padding: 0 0.65rem 0.65rem;
     border-radius: 1.1rem;
-    background: #1b2733;
+    background: var(--device-bezel);
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.08),
       0 40px 80px -20px rgba(0, 0, 0, 0.65),
@@ -603,9 +603,9 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   .zippy-device-label {
     margin-left: auto;
     padding: 0.15rem 0.6rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     background: rgba(255, 255, 255, 0.08);
-    color: #c9dbe3;
+    color: var(--on-navy-deep-soft);
     font-size: 0.72rem;
     font-style: normal;
     font-weight: 800;
@@ -649,7 +649,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
     height: 1.4rem;
     margin: -0.2rem auto 0;
     border-radius: 0 0 0.6rem 0.6rem;
-    background: linear-gradient(#1b2733, #0f1822);
+    background: linear-gradient(var(--device-bezel), #0f1822);
     transform: rotateY(-7deg);
   }
 
@@ -662,7 +662,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
     aspect-ratio: 700 / 1007;
     padding: 0.45rem;
     border-radius: 1.2rem;
-    background: #111a24;
+    background: var(--device-tablet);
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 30px 60px -10px rgba(0, 0, 0, 0.7);
     opacity: 0;
     transform: translate(2rem, 3rem) rotate(8deg);
@@ -707,9 +707,9 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
 
   .zippy-stat {
     padding: 1.3rem 1.4rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-rule);
+    border-radius: var(--radius-xl);
+    background: var(--glass-fill);
   }
 
   .zippy-stat:nth-child(2) { transition-delay: 0.1s; }
@@ -725,7 +725,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   .zippy-stat dt span {
     display: inline-block;
     padding-right: 0.05em;
-    background: linear-gradient(90deg, #70e0d8, #ff9d75);
+    background: linear-gradient(90deg, var(--teal-light), var(--orange-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -734,7 +734,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
 
   .zippy-stat dd {
     margin: 0.6rem 0 0;
-    color: #c9dbe3;
+    color: var(--on-navy-deep-soft);
     line-height: 1.5;
   }
 

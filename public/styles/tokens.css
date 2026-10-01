@@ -1,0 +1,84 @@
+/*
+  Loosey Goosey Robotics design tokens.
+
+  This file is the source of truth for color, type, spacing, radius and shadow.
+  Usage rules live in design-system/README.md. Use these variables instead of
+  hard-coded values; add a token here before reaching for a new literal.
+*/
+
+:root {
+  color-scheme: light;
+
+  /* Brand */
+  --navy: #102a43;           /* Hero ground, active nav pill, dark buttons, default text */
+  --navy-deep: #071c2e;      /* Footer and Zippy ground; text on orange and light fills */
+  --navy-hover: #1f4566;     /* Hover fill for .button-dark */
+  --teal: #00a9a5;           /* Decorative only: hero disc, hex outlines, focus on dark */
+  --teal-dark: #007d7a;      /* Teal that works as text (5.0:1 on surface) */
+  --teal-darker: #005f5d;    /* Reserved for a deeper link state; unused */
+  --teal-light: #70e0d8;     /* Teal fact card; start of the stat gradient */
+  --teal-wash: #d8f5f2;      /* Start of the roadmap gradient */
+  --orange: #ff7043;         /* The accent: primary buttons, eyebrows, logo ring */
+  --orange-hover: #ff8a65;   /* Hover fill for .button */
+  --orange-light: #ff9d75;   /* Orange fact card; end of the stat gradient */
+  --peach-wash: #ffe8c3;     /* End of the roadmap gradient */
+  --yellow: #ffcf4c;         /* Spare highlight; unused */
+
+  /* Surfaces and text on light grounds */
+  --bg: #f7f5ef;             /* Page ground; hero headline blocks */
+  --surface: #ffffff;        /* Cards, panels, image backdrops */
+  --surface-muted: #e1f4f2;  /* Pale teal panel ground; unused */
+  --text: var(--navy);
+  --text-soft: #486176;      /* Paragraphs, lists, captions (5.9:1 on bg) */
+  --text-on-orange: #263f52; /* Copy on the orange about section (4.0:1, below AA) */
+  --border: #c8d9dc;         /* 1px card and panel border */
+  --primary: var(--teal-dark);
+  --primary-dark: var(--teal-darker);
+  --accent: var(--orange);
+  --header-glass: rgba(247, 245, 239, .92);
+  --header-rule: rgba(16, 42, 67, .12);
+  --disabled-fill: #e7ebf1;
+  --disabled-text: #7d8896;  /* 3.0:1 on disabled-fill, below AA */
+
+  /* Text and fills on navy grounds */
+  --on-navy: #ffffff;
+  --on-navy-soft: #e0f7f4;          /* Hero paragraph */
+  --on-navy-muted: #d5e6e7;         /* Hero footnote */
+  --on-navy-deep-soft: #c9dbe3;     /* Zippy paragraphs and stat labels */
+  --on-navy-deep-muted: #9fb6c3;    /* Zippy small print, inactive feature rows */
+  --footer-text: #c2d3db;
+  --glass-fill: rgba(255, 255, 255, .04);
+  --glass-fill-active: rgba(255, 255, 255, .07);
+  --glass-rule: rgba(255, 255, 255, .1);
+  --device-bezel: #1b2733;
+  --device-tablet: #111a24;
+
+  /* Type */
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Spacing */
+  --space-1: .4rem;     /* Nav pill gap */
+  --space-2: .75rem;    /* Button and link rows */
+  --space-3: 1rem;      /* Card rows of three, spec lists */
+  --space-4: 1.25rem;   /* Resource card padding */
+  --space-5: 1.5rem;    /* Default grid gap, info note padding */
+  --space-6: 2rem;      /* Two-column detail grids */
+  --space-7: 2.5rem;    /* Section intro to card grid */
+  --section-pad: 4.5rem;
+  --container: 1120px;
+  --measure: 760px;
+
+  /* Radius */
+  --radius-xs: .35rem;    /* Images inside panels */
+  --radius-sm: .5rem;     /* Resource cards, embedded iframes */
+  --radius-md: .65rem;    /* Buttons, video frames */
+  --radius-lg: .8rem;     /* Zippy feature rows */
+  --radius-xl: 1rem;      /* Panels and cards */
+  --radius-pill: 999px;
+  --radius-round: 50%;
+
+  /* Shadow */
+  --shadow: 0 18px 42px rgba(7, 28, 46, .13);
+  --shadow-soft: 0 10px 24px rgba(7, 28, 46, .08);
+  --shadow-offset: .08em .08em 0 var(--orange);
+}
