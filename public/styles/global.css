@@ -55,6 +55,7 @@ main { min-height: 70vh; overflow: hidden; }
 .button-disabled { background: var(--disabled-fill); color: var(--disabled-text); cursor: not-allowed; }
 .section-label, .eyebrow, .panel-title, .footer-title, .price { font-weight: 800; }
 .eyebrow, .section-label { color: var(--orange); text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; }
+.hero-copy .eyebrow { color: var(--on-navy); }
 .section-header { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; margin-bottom: var(--space-5); }
 .section-header > .text-link { justify-self: end; }
 .section-header h2, .info-grid h2 { margin: .35rem 0 0; font-size: clamp(1.7rem, 3vw, 2.4rem); }
