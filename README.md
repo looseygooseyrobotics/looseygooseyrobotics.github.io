@@ -6,10 +6,10 @@ Built with [Astro](https://astro.build/) and deployed as a static site through G
 
 ## Pages
 
-- `/` — Competition overview, Hexy Hustle game highlights, team-starting steps, and founder information.
+- `/` — Competition overview, Hexy Hustle game highlights, a Zippy Manager feature showcase, team-starting steps, and founder information.
 - `/get-started/` — Kitbot build resources, CAD, source repository, Discord, and video walkthroughs.
-- `/competitions/` — Official rulebook link, game reveal video, and event schedule.
-- `/event-resources/` — Field CAD, Zippy Manager event software download, and event hosting recommendations.
+- `/competitions/` — Official rulebook link, game reveal video, and event schedule (an embedded Google Calendar).
+- `/event-resources/` — Field CAD, Zippy Manager download, a field build guide, 3D-printable hex files, and event hosting recommendations.
 
 ## Develop locally
 
@@ -40,7 +40,14 @@ Page content is kept close to its route:
 - `src/pages/competitions.astro`
 - `src/pages/event-resources.astro`
 
-Shared header, footer, and document metadata are in `src/components/` and `src/layouts/BaseLayout.astro`. Global styling and image assets are under `public/styles/`.
+Links used on only one page are constants at the top of that page's file rather than in `site.ts`:
+
+- `get-started.astro` — kitbot CAD, source repository, and walkthrough video URLs.
+- `event-resources.astro` — Zippy Manager releases link, field and hex downloads, and hosting tips.
+- `competitions.astro` — the Google Calendar embed for the event schedule.
+- `src/components/ZippyShowcase.astro` — Zippy Manager feature list, screenshots, and repository links.
+
+Shared header, footer, and document metadata are in `src/components/` and `src/layouts/BaseLayout.astro`. Global styling and images are under `public/styles/`, and downloadable CAD and 3D-print files (field STEP, hex STLs) are under `public/downloads/`.
 
 ## Design system
 
@@ -52,12 +59,13 @@ Colors, type, spacing, radii and shadows are CSS variables in [`public/styles/to
 .
 ├── design-system/         # Brand book and component guidelines
 ├── public/
+│   ├── downloads/        # Field STEP and hex STL files
 │   └── styles/
 │       ├── tokens.css    # Design tokens
 │       ├── global.css    # Shared component styles
 │       └── images/
 ├── src/
-│   ├── components/       # Shared header and footer
+│   ├── components/       # Header, footer, and Zippy Manager showcase
 │   ├── config/site.ts    # Site-wide content and links
 │   ├── layouts/          # Shared HTML layout
 │   └── pages/            # Astro routes
