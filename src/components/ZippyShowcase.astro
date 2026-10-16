@@ -6,27 +6,27 @@ const img = (name: string) => `/styles/images/zippy/${name}.webp`;
 // Each feature swaps the big screen, and some bring in the ref's tablet.
 const features = [
   {
-    title: "Makes the schedule",
+    title: "Make a schedule",
     blurb:
-      "Type in your team names and Zippy Manager spits out a qualification schedule that avoids back-to-back matches and repeat partners.",
+      "If you are lucky, it might work on the first try!",
     device: "Laptop",
     screen: img("app-schedule"),
     alt: "Zippy Manager schedule and rankings page",
     theme: "light"
   },
   {
-    title: "Checks teams in",
+    title: "Check teams in",
     blurb:
-      "Verify that the right teams showed up to play.",
+      "Is everyone here? No? Well at least the app looks cool.",
     device: "Laptop",
     screen: img("app-checkin"),
     alt: "Team check-in screen with red and blue alliance cards",
     theme: "light"
   },
   {
-    title: "Runs the clock",
+    title: "Run matches",
     blurb:
-      "Audience display with scoring and penalties updating in real time.",
+      "Audience display (ooooh, aaaaaah)",
     device: "TV",
     screen: img("tv-timer"),
     alt: "Audience display showing a match timer at 1:14",
@@ -35,9 +35,9 @@ const features = [
     theme: "dark"
   },
   {
-    title: "Scores on a tablet",
+    title: "Score on a tablet",
     blurb:
-      "Pair with a QR code to score matches from a phone or tablet.",
+      "Score matches from a a phone, tablet, or Samsung fridge.",
     device: "TV",
     screen: img("tv-final"),
     alt: "Audience display showing the final score, 15 to 10",
@@ -46,27 +46,27 @@ const features = [
     theme: "dark"
   },
   {
-    title: "Shows the rankings",
+    title: "Provide supplemental info",
     blurb:
-      "Between matches the TV shows the rankings, the schedule, and who's on deck, to keep competitors and audience members informed.",
+      "Show who's on deck. They will still be late.",
     device: "TV",
     screen: img("tv-rankings"),
     alt: "Audience display showing qualification rankings",
     theme: "dark"
   },
   {
-    title: "Runs alliance selection",
+    title: "Select alliance partners",
     blurb:
-      "Captains pick partners in rank order and Zippy Manager keeps track of who is with who.",
+      "Watch that one team backstab you in real-time.",
     device: "TV",
     screen: img("tv-alliance"),
     alt: "Audience display showing alliance selection in progress",
     theme: "dark"
   },
   {
-    title: "Handles the bracket",
+    title: "Generate a bracket",
     blurb:
-      "Zippy Manager makes the bracket at the click of a button. It determines seeding, byes, and match order automagically.",
+      "Why are you even reading this far? Nobody is gonna pick you anyway.",
     device: "TV",
     screen: img("tv-bracket"),
     alt: "Audience display showing the elimination bracket",
@@ -94,10 +94,9 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   <div class="container zippy-inner">
     <div class="zippy-top">
       <div class="zippy-intro reveal">
-        <p class="section-label">Event software</p>
-        <h2 id="zippy-heading">It's like we almost know what we are doing!</h2>
+        <h2 id="zippy-heading">Zippy Manager</h2>
         <p>
-          Zippy Manager is a free desktop app that runs the tournament for you (minus choosing a date, providing a venue, coordinating transportation, and finding volunteers).
+          Running a good event starts with bad software.
         </p>
       </div>
       <div class="zippy-cta reveal">
