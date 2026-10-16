@@ -366,7 +366,7 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   }
 
   .zippy-intro h2 {
-    margin: 0.3rem 0 1rem;
+    margin: 0 0 1rem;
     font-size: clamp(2rem, 4.2vw, 3.5rem);
     line-height: 1.04;
     letter-spacing: -0.045em;
@@ -790,6 +790,10 @@ const stats: { from: number; to: number; prefix?: string; postfix?: string; labe
   @media (max-width: 640px) {
     .zippy-hex {
       opacity: 0.15;
+    }
+
+    .zippy-cta {
+      justify-self: stretch;
     }
 
     .zippy-download {
