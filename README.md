@@ -43,7 +43,7 @@ Page content is kept close to its route:
 Links used on only one page are constants at the top of that page's file rather than in `site.ts`:
 
 - `get-started.astro` — kitbot CAD, source repository, and walkthrough video URLs.
-- `event-resources.astro` — Zippy Manager releases link, field and hex downloads, and hosting tips.
+- `event-resources.astro` — Zippy Manager releases link, and field and hex downloads.
 - `competitions.astro` — the Google Calendar embed for the event schedule.
 - `src/components/ZippyShowcase.astro` — Zippy Manager feature list, screenshots, and repository links.
 

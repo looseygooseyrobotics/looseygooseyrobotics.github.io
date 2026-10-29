@@ -41,41 +41,6 @@ const fieldViews = [
   { src: "/styles/images/field/starting-zone.png", width: 1400, height: 660, caption: "Starting zone" }
 ];
 
-const hostingTips = [
-  {
-    title: "Get enough teams",
-    body: "Events need at least 4 teams, but aim for 10 or more. It gives teams time between matches and a better variety of match ups."
-  },
-  {
-    title: "Set up a pit area",
-    body: "Provide plenty of table space and power strips so competitors can work on their robots and charge their batteries."
-  },
-  {
-    title: "Staff the field",
-    body: "Every event needs a dedicated head ref. Add extra refs and scorekeepers if you can to reduce missed calls and speed up match cycles."
-  },
-  {
-    title: "Choose a knowledgeable ref",
-    body: "Your head ref should know the game well and be familiar with the ins and outs of the game manual."
-  },
-  {
-    title: "Put the event on screen",
-    body: "Connect a large TV to a PC or laptop running Zippy Manager. It generates match schedules, scores matches, and builds the elimination bracket."
-  },
-  {
-    title: "Bring the sound",
-    body: "Use a speaker system for game sounds, announcements, live commentary, and interviews. A dedicated MC makes the event far more fun for spectators."
-  },
-  {
-    title: "Practice makes perfect",
-    body: "Give teams time to practice before the event starts to test their robots (and even during the event if you have a spare field). It reduces the amount of delays if teams can work out the kinks beforehand."
-  },
-  {
-    title: "Get on with it",
-    body: "Start on time, have someone wrangling teams to the field for their matches, skip a match and come back if a team needs to do major repairs. A typical 10 team event takes about 3 hours, not including setup/teardown and practice time."
-  }
-];
-
 const printSettings = [
   "0.2 mm layer height",
   "2 perimeters",
@@ -88,7 +53,7 @@ const printSettings = [
 
 <BaseLayout
   title="Event Resources"
-  description="Field CAD, event management software, and hosting recommendations for Hexy Hustle events."
+  description="Field CAD, event management software, and hex printing guides for Hexy Hustle events."
 >
   <section class="page-hero resources-hero">
     <div class="container narrow">
@@ -246,27 +211,6 @@ const printSettings = [
     </div>
   </section>
 
-  <section class="resources-section" id="hosting-recommendations">
-    <div class="container">
-      <div class="section-header resources-header">
-        <div>
-          <p class="eyebrow">Recommendations</p>
-          <h2>Tips for hosting a great event.</h2>
-        </div>
-      </div>
-
-      <div class="print-grid">
-        {
-          hostingTips.map((tip) => (
-            <article class="info-note">
-              <p class="panel-title">{tip.title}</p>
-              <p>{tip.body}</p>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
 </BaseLayout>
 
 <style>

@@ -19,7 +19,7 @@ Rules for changing styles:
 
 - Use a token, never a raw hex, rgba or radius. If nothing fits, add a token to `tokens.css` with a comment saying where it is used, then use it.
 - A component used on more than one page belongs in `global.css`, not in a page's `<style>` block.
-- The Zippy Manager device mockup keeps a few local literals (the macOS window dots, screenshot backdrops and glow alphas). They imitate hardware, not the brand, so don't promote them to tokens or reuse them elsewhere.
+- The Zippy Manager device mockup keeps a few local literals (the macOS window dots, screenshot backdrops and drop-shadow alphas). They imitate hardware, not the brand, so don't promote them to tokens or reuse them elsewhere.
 
 ## Voice and copy
 
@@ -47,7 +47,7 @@ Real examples to calibrate against:
 - The three fact-card fills are `--teal-tint`, `--orange-tint` and `--navy`, always together. They step down in lightness (pale, mid, dark) so they read apart without relying on hue. Text is `--navy-deep` on the tints.
 - The about section sits on `--sand-wash`, a calm warm ground, with `--text` headings, `--text-soft` copy and a `.button-dark`.
 - Home page sections alternate grounds: `--navy` hero, `--surface` competition, `--navy-deep` Zippy, `--bg` roadmap, `--sand-wash` about, `--navy-deep` footer. Don't put two sections with the same ground next to each other.
-- `--teal-light`, `--orange-light`, `--teal-wash` and `--peach-wash` survive only for the Zippy section. `--yellow`, `--surface-muted`, `--teal-darker` and `--text-on-orange` are defined but unused.
+- `--teal-light`, `--orange-light`, `--teal-wash`, `--peach-wash`, `--yellow`, `--surface-muted`, `--teal-darker` and `--text-on-orange` are defined but unused.
 
 ### Gradients
 
@@ -151,4 +151,3 @@ Line-heights are `--leading-tight` (1.05) for display, `--leading-snug` (1.15) f
 - [ResourceCard](components/ResourceCard.md)
 - [InfoNote](components/InfoNote.md)
 - [FieldSpec](components/FieldSpec.md)
-- [ZippyStat](components/ZippyStat.md)

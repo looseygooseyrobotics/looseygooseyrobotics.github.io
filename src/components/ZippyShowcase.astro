@@ -73,12 +73,6 @@ const features = [
     theme: "dark"
   }
 ];
-
-const stats: { value: number; prefix?: string; postfix?: string; label: string }[] = [
-  { value: 99, prefix: "Free", label: "Open source" },
-  { value: 3, prefix: "", label: "Operating systems. Mac, Windows, and Linux" },
-  { value: 50, postfix: "%", label: "Chance of it working as intended" }
-];
 ---
 
 <section class="zippy-section ground-dark" id="zippy-manager" aria-labelledby="zippy-heading">
@@ -175,14 +169,6 @@ const stats: { value: number; prefix?: string; postfix?: string; label: string }
       </div>
     </div>
 
-    <dl class="zippy-stats">
-      {stats.map((stat) => (
-        <div class="zippy-stat">
-          <dt>{stat.prefix}{stat.value}{stat.postfix}</dt>
-          <dd>{stat.label}</dd>
-        </div>
-      ))}
-    </dl>
   </div>
 </section>
 
@@ -457,18 +443,9 @@ const stats: { value: number; prefix?: string; postfix?: string; label: string }
     background: var(--device-bezel);
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.08),
-      0 40px 80px -20px rgba(0, 0, 0, 0.65),
-      0 0 120px -30px rgba(0, 169, 165, 0.55);
+      0 40px 80px -20px rgba(0, 0, 0, 0.65);
     transform: rotateY(-7deg) rotateX(3deg);
     transform-origin: 60% 50%;
-    transition: box-shadow 0.4s ease;
-  }
-
-  .zippy-screen[data-theme="light"] {
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.08),
-      0 40px 80px -20px rgba(0, 0, 0, 0.65),
-      0 0 120px -30px rgba(255, 112, 67, 0.55);
   }
 
   .zippy-screen-bar {
@@ -581,37 +558,6 @@ const stats: { value: number; prefix?: string; postfix?: string; label: string }
     opacity: 1;
   }
 
-  /* Stats */
-  .zippy-stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin: clamp(3rem, 6vw, 4.5rem) 0 0;
-  }
-
-  .zippy-stat {
-    padding: 1.3rem 1.4rem;
-    border: 1px solid var(--glass-rule);
-    border-radius: var(--radius-xl);
-    background: var(--glass-fill);
-  }
-
-  .zippy-stat dt {
-    color: var(--teal-light);
-    font-family: var(--font-mono);
-    font-size: clamp(2.4rem, 4vw, 3.2rem);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    line-height: 1;
-    letter-spacing: normal;
-  }
-
-  .zippy-stat dd {
-    margin: 0.6rem 0 0;
-    color: var(--on-navy-deep-soft);
-    line-height: 1.5;
-  }
-
   @media (max-width: 1000px) {
     .zippy-demo {
       grid-template-columns: 1fr;
@@ -640,10 +586,6 @@ const stats: { value: number; prefix?: string; postfix?: string; label: string }
     .zippy-cta {
       justify-self: start;
       text-align: left;
-    }
-
-    .zippy-stats {
-      grid-template-columns: 1fr;
     }
   }
 

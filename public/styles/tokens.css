@@ -17,14 +17,14 @@
   --teal-dark: #007d7a;      /* Teal that works as text (5.0:1 on surface) */
   --teal-darker: #005f5d;    /* Reserved for a deeper link state; unused */
   --teal-tint: #e1f4f2;      /* Teal fact card fill (navy-deep text 15.4:1) */
-  --teal-light: #70e0d8;     /* Start of the Zippy stat gradient (no longer a card fill) */
-  --teal-wash: #d8f5f2;      /* Kept for ZippyShowcase; the roadmap gradient is gone */
+  --teal-light: #70e0d8;     /* Unused */
+  --teal-wash: #d8f5f2;      /* Unused */
   --orange: #ff7043;         /* The accent: primary buttons, small marks, logo ring, orange text on navy only */
   --orange-text: #ad3f12;    /* Orange as text on light grounds (5.5:1 bg, 6.0:1 surface, 4.7:1 sand-wash) */
   --orange-hover: #ff8a65;   /* Hover fill for .button */
-  --orange-light: #ff9d75;   /* End of the Zippy stat gradient (no longer a card fill) */
+  --orange-light: #ff9d75;   /* Unused */
   --orange-tint: #f6c4a8;    /* Orange fact card fill, darker than --teal-tint (navy-deep text 11.0:1) */
-  --peach-wash: #ffe8c3;     /* Kept for ZippyShowcase; the roadmap gradient is gone */
+  --peach-wash: #ffe8c3;     /* Unused */
   --sand-wash: #f3e0cf;      /* About section ground (text-soft 5.0:1, navy 11.4:1) */
   --yellow: #ffcf4c;         /* Spare highlight; unused */
 
@@ -51,7 +51,7 @@
   --on-navy: #ffffff;
   --on-navy-soft: #e0f7f4;          /* Hero paragraph */
   --on-navy-muted: #d5e6e7;         /* Hero footnote */
-  --on-navy-deep-soft: #c9dbe3;     /* Zippy paragraphs and stat labels */
+  --on-navy-deep-soft: #c9dbe3;     /* Zippy paragraphs */
   --on-navy-deep-muted: #9fb6c3;    /* Zippy small print, inactive feature rows */
   --footer-text: #c2d3db;
   --glass-fill: rgba(255, 255, 255, .04);
