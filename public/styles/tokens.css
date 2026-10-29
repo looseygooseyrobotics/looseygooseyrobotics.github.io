@@ -16,12 +16,16 @@
   --teal: #00a9a5;           /* Decorative only: hero disc, hex outlines, focus on dark */
   --teal-dark: #007d7a;      /* Teal that works as text (5.0:1 on surface) */
   --teal-darker: #005f5d;    /* Reserved for a deeper link state; unused */
-  --teal-light: #70e0d8;     /* Teal fact card; start of the stat gradient */
-  --teal-wash: #d8f5f2;      /* Start of the roadmap gradient */
-  --orange: #ff7043;         /* The accent: primary buttons, eyebrows, logo ring */
+  --teal-tint: #e1f4f2;      /* Teal fact card fill (navy-deep text 15.4:1) */
+  --teal-light: #70e0d8;     /* Start of the Zippy stat gradient (no longer a card fill) */
+  --teal-wash: #d8f5f2;      /* Kept for ZippyShowcase; the roadmap gradient is gone */
+  --orange: #ff7043;         /* The accent: primary buttons, small marks, logo ring, orange text on navy only */
+  --orange-text: #ad3f12;    /* Orange as text on light grounds (5.5:1 bg, 6.0:1 surface, 4.7:1 sand-wash) */
   --orange-hover: #ff8a65;   /* Hover fill for .button */
-  --orange-light: #ff9d75;   /* Orange fact card; end of the stat gradient */
-  --peach-wash: #ffe8c3;     /* End of the roadmap gradient */
+  --orange-light: #ff9d75;   /* End of the Zippy stat gradient (no longer a card fill) */
+  --orange-tint: #f6c4a8;    /* Orange fact card fill, darker than --teal-tint (navy-deep text 11.0:1) */
+  --peach-wash: #ffe8c3;     /* Kept for ZippyShowcase; the roadmap gradient is gone */
+  --sand-wash: #f3e0cf;      /* About section ground (text-soft 5.0:1, navy 11.4:1) */
   --yellow: #ffcf4c;         /* Spare highlight; unused */
 
   /* Surfaces and text on light grounds */
@@ -30,7 +34,7 @@
   --surface-muted: #e1f4f2;  /* Pale teal panel ground; unused */
   --text: var(--navy);
   --text-soft: #486176;      /* Paragraphs, lists, captions (5.9:1 on bg) */
-  --text-on-orange: #263f52; /* Copy on the orange about section (4.0:1, below AA) */
+  --text-on-orange: #263f52; /* Unused: the about section is no longer orange */
   --border: #c8d9dc;         /* 1px card and panel border */
   --primary: var(--teal-dark);
   --primary-dark: var(--teal-darker);
@@ -38,7 +42,10 @@
   --header-glass: rgba(247, 245, 239, .92);
   --header-rule: rgba(16, 42, 67, .12);
   --disabled-fill: #e7ebf1;
-  --disabled-text: #7d8896;  /* 3.0:1 on disabled-fill, below AA */
+  --disabled-text: #56606e;  /* 5.3:1 on disabled-fill */
+  --focus-ring-light: var(--teal-dark); /* Focus outline on light grounds (>=3.6:1 on every light ground) */
+  --focus-ring-dark: var(--teal);       /* Focus outline on navy grounds (5.0:1 navy, 5.9:1 navy-deep) */
+  --focus-ring: var(--focus-ring-light); /* Current outline; .ground-dark swaps it to --focus-ring-dark */
 
   /* Text and fills on navy grounds */
   --on-navy: #ffffff;
@@ -53,11 +60,38 @@
   --device-bezel: #1b2733;
   --device-tablet: #111a24;
 
-  /* Type */
+  /* Type: Inter for everything, JetBrains Mono for labels and figures.
+     Both load from Google Fonts in BaseLayout.astro. */
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-sans);  /* Headings; same family as body, kept as a hook */
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; /* Eyebrows, step numbers, file formats, fact numbers, spec labels */
+
+  --text-xs: .8125rem;   /* Eyebrows, section labels */
+  --text-sm: .875rem;    /* Meta, step numbers, spec labels */
+  --text-base: 1rem;     /* Body, nav, buttons */
+  --text-md: 1.125rem;   /* Lead paragraphs, panel titles */
+  --text-lg: 1.25rem;    /* Fact card titles, footer title */
+  --text-xl: 1.5rem;     /* Roadmap card titles */
+  --text-2xl: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);   /* Section-header h2, fact numbers, feature h3 */
+  --text-3xl: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);     /* Section intro h2, inner page h1 */
+  --text-4xl: clamp(2.75rem, 1.6rem + 4.6vw, 4.75rem);  /* Home hero h1 */
+
+  --leading-tight: 1.05;  /* Display headings (3xl, 4xl) */
+  --leading-snug: 1.15;   /* h2, h3, card titles */
+  --leading-body: 1.6;    /* Running copy */
+
+  --tracking-hero: -.03em;     /* Home hero h1 */
+  --tracking-display: -.025em; /* Page and section titles */
+  --tracking-snug: -.01em;     /* h3, card titles */
+  --tracking-caps: .08em;      /* Uppercase mono labels */
+
+  --weight-regular: 400;   /* Body */
+  --weight-medium: 500;    /* Mono meta (file format, spec labels) */
+  --weight-semibold: 600;  /* Nav, captions, mono eyebrows and numbers */
+  --weight-bold: 700;      /* Headings, buttons, links, panel titles. Nothing heavier. */
 
   /* Spacing */
-  --space-1: .4rem;     /* Nav pill gap */
+  --space-1: .5rem;     /* Nav pill gap (8px minimum between tap targets) */
   --space-2: .75rem;    /* Button and link rows */
   --space-3: 1rem;      /* Card rows of three, spec lists */
   --space-4: 1.25rem;   /* Resource card padding */
@@ -70,15 +104,18 @@
 
   /* Radius */
   --radius-xs: .35rem;    /* Images inside panels */
-  --radius-sm: .5rem;     /* Resource cards, embedded iframes */
+  --radius-sm: .5rem;     /* Embedded iframes */
   --radius-md: .65rem;    /* Buttons, video frames */
   --radius-lg: .8rem;     /* Zippy feature rows */
   --radius-xl: 1rem;      /* Panels and cards */
+  --radius-card: var(--radius-xl); /* The one card radius: resource, roadmap, fact, info-note, hero-panel */
   --radius-pill: 999px;
   --radius-round: 50%;
 
   /* Shadow */
-  --shadow: 0 18px 42px rgba(7, 28, 46, .13);
+  --shadow: 0 18px 42px rgba(7, 28, 46, .13);       /* About photo; resource card hover */
   --shadow-soft: 0 10px 24px rgba(7, 28, 46, .08);
+  --shadow-card: var(--shadow-soft);  /* The one card shadow: resource, roadmap, info-note, hero-panel */
+  --tap-min: 2.75rem;  /* 44px minimum tap target */
   --shadow-offset: .08em .08em 0 var(--orange);
 }

@@ -19,17 +19,17 @@ const imageBaseUrl = import.meta.env.BASE_URL;
         </h1>
         <div class="hero-actions">
           <a class="button" href="/get-started/">Start your team</a>
-          <a class="button button-secondary" href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">Read the rules</a>
+          <a class="button button-secondary" href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">Read the rules<span class="visually-hidden"> (opens in new tab)</span></a>
         </div>
         <p class="hero-footnote">The 2025–2026 game: <strong>Hexy Hustle</strong></p>
       </div>
 
       <div class="hero-panel">
         <div class="video-frame">
+          <p class="frame-loading" aria-hidden="true">Loading video…</p>
           <iframe
             src={promoVideoEmbedUrl}
-            title="Hexy Hustle reveal video"
-            loading="lazy"
+            title="Hexy Hustle reveal video (YouTube)"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -81,8 +81,8 @@ const imageBaseUrl = import.meta.env.BASE_URL;
           <h3>Start a team</h3>
           <p>Read the rules, join the Discord, steal ideas from other teams.</p>
           <div class="card-links">
-            <a href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">Game rules</a>
-            <a href={siteConfig.competitionDiscordUrl} target="_blank" rel="noreferrer">Join Discord</a>
+            <a href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">Game rules<span class="visually-hidden"> (opens in new tab)</span></a>
+            <a href={siteConfig.competitionDiscordUrl} target="_blank" rel="noreferrer">Join Discord<span class="visually-hidden"> (opens in new tab)</span></a>
           </div>
         </article>
         <article class="roadmap-card">
@@ -112,6 +112,10 @@ const imageBaseUrl = import.meta.env.BASE_URL;
           class="about-photo about-photo-couple"
           src={`${imageBaseUrl}styles/images/couple.jpg`}
           alt=""
+          width="1760"
+          height="1320"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div class="about-copy">
@@ -122,7 +126,7 @@ const imageBaseUrl = import.meta.env.BASE_URL;
         <p>
           After competing from high school through college, mentoring teams, and trying everything from battlebots to esports, Micah kept coming back to the same thing: building robots with friends. Loosey Goosey Robotics exists to make that feeling accessible to seasoned robotics veterans and beginners alike.
         </p>
-        <a class="button button-dark" href={siteConfig.founderLinkedInUrl} target="_blank" rel="noreferrer">Connect with Micah on LinkedIn</a>
+        <a class="button button-dark" href={siteConfig.founderLinkedInUrl} target="_blank" rel="noreferrer">Connect with Micah on LinkedIn<span class="visually-hidden"> (opens in new tab)</span></a>
       </div>
     </div>
   </section>

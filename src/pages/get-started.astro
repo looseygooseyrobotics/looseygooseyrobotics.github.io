@@ -2,8 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site";
 
-const assemblyVideoUrl = "https://www.youtube.com/embed/Egrp3yuLZys";
-const setupVideoUrl = "https://www.youtube.com/embed/Com644XKyWE";
+const programmingVideoUrl = "https://www.youtube.com/embed/Egrp3yuLZys";
+const assemblyVideoUrl = "https://www.youtube.com/embed/Com644XKyWE";
 const githubRepoUrl = "https://github.com/Marsgate/hexyhustle-kitbot";
 const cadUrl =
   "https://cad.onshape.com/documents/0fc45b39b4d57933cb774022/w/c29da13817e347fc61c06914/e/d3c1a49ca1396e0dae157f67";
@@ -15,7 +15,7 @@ const cadUrl =
 >
   <section class="page-hero tutorial-hero">
     <div class="container narrow">
-      <p class="section-label">Tutorial</p>
+      <p class="eyebrow">Tutorial</p>
       <h1>Build a competition-ready robot.</h1>
       <p>
         Use the walkthrough videos, source repo, and CAD together while you assemble,
@@ -34,12 +34,12 @@ const cadUrl =
 
       <div class="tutorial-links-grid">
         <a class="resource-card" href={githubRepoUrl} target="_blank" rel="noreferrer">
-          <p class="panel-title">GitHub repo</p>
+          <p class="panel-title">GitHub repo<span class="visually-hidden"> (opens in new tab)</span></p>
           <p>Code, configuration, and reference files for the kitbot build.</p>
         </a>
 
         <a class="resource-card" href={cadUrl} target="_blank" rel="noreferrer">
-          <p class="panel-title">CAD</p>
+          <p class="panel-title">CAD<span class="visually-hidden"> (opens in new tab)</span></p>
           <p>Mechanical reference for parts, placement, and assembly details.</p>
         </a>
 
@@ -49,7 +49,7 @@ const cadUrl =
           target="_blank"
           rel="noreferrer"
         >
-          <p class="panel-title">Discord</p>
+          <p class="panel-title">Discord<span class="visually-hidden"> (opens in new tab)</span></p>
           <p>Ask build questions, share progress, and get help from the community.</p>
         </a>
       </div>
@@ -60,18 +60,19 @@ const cadUrl =
     <div class="container">
       <div class="section-header tutorial-header">
         <div>
-          <p class="section-label">Video walkthroughs</p>
+          <p class="eyebrow">Video walkthroughs</p>
           <h2>Follow along with videos to program and assemble your kit.</h2>
         </div>
       </div>
 
       <div class="tutorial-video-grid">
         <article class="info-note tutorial-card">
-          <p class="panel-title">Programming Walkthrough</p>
+          <p class="panel-title">Programming walkthrough</p>
           <div class="video-frame">
+            <p class="frame-loading" aria-hidden="true">Loading video…</p>
             <iframe
-              src={assemblyVideoUrl}
-              title="Hexy Hustle kitbot assembly walkthrough"
+              src={programmingVideoUrl}
+              title="Hexy Hustle kitbot programming walkthrough (YouTube)"
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -83,9 +84,10 @@ const cadUrl =
         <article class="info-note tutorial-card">
           <p class="panel-title">Assembly walkthrough</p>
           <div class="video-frame">
+            <p class="frame-loading" aria-hidden="true">Loading video…</p>
             <iframe
-              src={setupVideoUrl}
-              title="Hexy Hustle kitbot setup walkthrough"
+              src={assemblyVideoUrl}
+              title="Hexy Hustle kitbot assembly walkthrough (YouTube)"
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -115,7 +117,7 @@ const cadUrl =
   .tutorial-links-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: var(--space-5);
   }
 
   .tutorial-links-grid {
@@ -123,7 +125,7 @@ const cadUrl =
   }
 
   .tutorial-card {
-    padding: 1rem;
+    padding: var(--space-3);
   }
 
   .tutorial-card .panel-title {

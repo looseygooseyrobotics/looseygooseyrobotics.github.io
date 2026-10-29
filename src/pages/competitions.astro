@@ -13,10 +13,10 @@ const imageBaseUrl = import.meta.env.BASE_URL;
         <h1>Competitions</h1>
         <div class="info-note video-panel">
           <div class="video-frame">
+            <p class="frame-loading" aria-hidden="true">Loading video…</p>
             <iframe
               src={promoVideoEmbedUrl}
-              title="Hexy Hustle reveal video"
-              loading="lazy"
+              title="Hexy Hustle reveal video (YouTube)"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
@@ -25,7 +25,7 @@ const imageBaseUrl = import.meta.env.BASE_URL;
         </div>
         <div class="hero-actions">
           <a class="button" href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">
-            Official competition rules
+            Official competition rules<span class="visually-hidden"> (opens in new tab)</span>
           </a>
         </div>
         <p>
@@ -35,14 +35,14 @@ const imageBaseUrl = import.meta.env.BASE_URL;
       </div>
 
       <div class="info-note schedule-panel" id="event-schedule">
+        <p class="frame-loading" aria-hidden="true">Loading schedule…</p>
         <iframe
           src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&title=Loosey%20Goosey%20Robotics%20Events&showDate=0&showTabs=0&showCalendars=0&showNav=0&mode=AGENDA&src=YTNmNzRhZjE2YzBiNDYzYTQxYjc1MzM5NDY1NjZmOWYwMjBhZWIxMzIyNzI4YzI3NGYzNDMyMGY3NDM5MmQzZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23e67c73"
-          title="Event schedule"
+          title="Loosey Goosey Robotics event schedule (Google Calendar)"
           width="500"
           height="600"
-          frameborder="0"
+          loading="lazy"
           scrolling="no"
-          style="border: solid 1px #777"
         ></iframe>
       </div>
     </div>
@@ -53,19 +53,19 @@ const imageBaseUrl = import.meta.env.BASE_URL;
   .competition-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: var(--space-5);
     align-items: start;
   }
 
   .schedule-panel {
     position: relative;
     isolation: isolate;
-    padding: 1rem;
+    padding: var(--space-3);
   }
 
   .video-panel {
-    margin: 1.25rem 0;
-    padding: 1rem;
+    margin: var(--space-4) 0;
+    padding: var(--space-3);
   }
 
   .schedule-panel iframe {
@@ -73,16 +73,18 @@ const imageBaseUrl = import.meta.env.BASE_URL;
     z-index: 1;
     display: block;
     width: 100%;
-    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  /* Loading placeholders: sit behind each iframe until it paints over them. */
+  .schedule-panel .frame-loading {
+    color: var(--text-soft);
   }
 
   @media (max-width: 720px) {
     .competition-grid {
       grid-template-columns: 1fr;
-    }
-
-    .schedule-panel {
-      margin-bottom: 10rem;
     }
   }
 </style>

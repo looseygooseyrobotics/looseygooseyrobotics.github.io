@@ -33,12 +33,12 @@ const fieldSpecs = [
 ];
 
 const fieldViews = [
-  { src: "/styles/images/field/field-isometric.png", caption: "Starting configuration" },
-  { src: "/styles/images/field/field-top.png", caption: "Top view" },
-  { src: "/styles/images/field/hanging-bar.png", caption: "Hanging bar" },
-  { src: "/styles/images/field/tower.png", caption: "Tower" },
-  { src: "/styles/images/field/scoring-zone.png", caption: "Scoring zone" },
-  { src: "/styles/images/field/starting-zone.png", caption: "Starting zone" }
+  { src: "/styles/images/field/field-isometric.png", width: 1400, height: 900, caption: "Starting configuration" },
+  { src: "/styles/images/field/field-top.png", width: 1600, height: 820, caption: "Top view" },
+  { src: "/styles/images/field/hanging-bar.png", width: 1400, height: 620, caption: "Hanging bar" },
+  { src: "/styles/images/field/tower.png", width: 900, height: 900, caption: "Tower" },
+  { src: "/styles/images/field/scoring-zone.png", width: 1400, height: 760, caption: "Scoring zone" },
+  { src: "/styles/images/field/starting-zone.png", width: 1400, height: 660, caption: "Starting zone" }
 ];
 
 const hostingTips = [
@@ -92,7 +92,7 @@ const printSettings = [
 >
   <section class="page-hero resources-hero">
     <div class="container narrow">
-      <p class="section-label">Hosting</p>
+      <p class="eyebrow">Hosting</p>
       <h1>Run your own Hexy Hustle event.</h1>
       <p>
         Everything you need to host a competition.
@@ -115,7 +115,7 @@ const printSettings = [
         </a>
 
         <a class="resource-card" href={zippyManagerReleasesUrl} target="_blank" rel="noreferrer">
-          <p class="panel-title">Zippy Manager</p>
+          <p class="panel-title">Zippy Manager<span class="visually-hidden"> (opens in new tab)</span></p>
           <p>
             Download the desktop app for match timing, schedules, brackets, alliance
             selection, and the live audience display.
@@ -128,7 +128,7 @@ const printSettings = [
           target="_blank"
           rel="noreferrer"
         >
-          <p class="panel-title">Discord</p>
+          <p class="panel-title">Discord<span class="visually-hidden"> (opens in new tab)</span></p>
           <p>Ask hosting questions and coordinate with other event organizers.</p>
         </a>
       </div>
@@ -139,7 +139,7 @@ const printSettings = [
     <div class="container">
       <div class="section-header resources-header">
         <div>
-          <p class="section-label">Field</p>
+          <p class="eyebrow">Field</p>
           <h2>Build the Hexy Hustle field.</h2>
         </div>
       </div>
@@ -160,7 +160,7 @@ const printSettings = [
           fieldDownloads.map((file) => (
             <a class="resource-card" href={file.href} download>
               <p class="panel-title">{file.title}</p>
-              <p class="file-format">{file.format}</p>
+              <p class="file-format">Download · {file.format}</p>
               <p>{file.description}</p>
             </a>
           ))
@@ -171,7 +171,14 @@ const printSettings = [
         {
           fieldViews.map((view) => (
             <figure class="info-note field-view">
-              <img src={view.src} alt={`Hexy Hustle field: ${view.caption.toLowerCase()}`} loading="lazy" />
+              <img
+                src={view.src}
+                alt={`Hexy Hustle field: ${view.caption.toLowerCase()}`}
+                width={view.width}
+                height={view.height}
+                loading="lazy"
+                decoding="async"
+              />
               <figcaption>{view.caption}</figcaption>
             </figure>
           ))
@@ -180,7 +187,7 @@ const printSettings = [
 
       <p class="field-note">
         Full field dimensions and rules are in the{" "}
-        <a href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">game manual</a>.
+        <a href={siteConfig.competitionRulesUrl} target="_blank" rel="noreferrer">game manual<span class="visually-hidden"> (opens in new tab)</span></a>.
       </p>
     </div>
   </section>
@@ -189,7 +196,7 @@ const printSettings = [
     <div class="container">
       <div class="section-header resources-header">
         <div>
-          <p class="section-label">Game pieces</p>
+          <p class="eyebrow">Game pieces</p>
           <h2>3D print the hexes.</h2>
         </div>
       </div>
@@ -205,7 +212,10 @@ const printSettings = [
             <img
               src="/styles/images/field/hex-half-orientation.png"
               alt="A hex half in the slicer, lying flat with the patterned side against the build plate"
+              width="944"
+              height="641"
               loading="lazy"
+              decoding="async"
             />
             <figcaption>Hex half oriented in the slicer, pattern side down.</figcaption>
           </figure>
@@ -221,7 +231,14 @@ const printSettings = [
             {printSettings.map((setting) => <li>{setting}</li>)}
           </ul>
           <figure class="print-figure">
-            <img src="/styles/images/field/hex.png" alt="A finished game hex" loading="lazy" />
+            <img
+              src="/styles/images/field/hex.png"
+              alt="A finished game hex"
+              width="900"
+              height="560"
+              loading="lazy"
+              decoding="async"
+            />
             <figcaption>Finished hex.</figcaption>
           </figure>
         </article>
@@ -233,7 +250,7 @@ const printSettings = [
     <div class="container">
       <div class="section-header resources-header">
         <div>
-          <p class="section-label">Recommendations</p>
+          <p class="eyebrow">Recommendations</p>
           <h2>Tips for hosting a great event.</h2>
         </div>
       </div>
@@ -274,13 +291,13 @@ const printSettings = [
   }
 
   .field-gallery {
-    margin-top: 1.5rem;
+    margin-top: var(--space-5);
   }
 
   .print-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: var(--space-5);
   }
 
   .info-note .panel-title {
@@ -299,8 +316,8 @@ const printSettings = [
   .field-specs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
-    margin: 0 0 1.5rem;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-5);
   }
 
   .field-spec {
@@ -310,6 +327,7 @@ const printSettings = [
 
   .field-spec dt {
     color: var(--text-soft);
+    font-family: var(--font-mono);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -319,18 +337,20 @@ const printSettings = [
   .field-spec dd {
     margin: 0.3rem 0 0;
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
   }
 
   .field-view {
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 1rem;
+    padding: var(--space-3);
   }
 
   .field-view img {
     flex: 1;
     width: 100%;
+    height: auto;
     aspect-ratio: 4 / 3;
     object-fit: contain;
     background: var(--surface);
@@ -341,11 +361,11 @@ const printSettings = [
   .print-figure figcaption {
     margin-top: 0.75rem;
     color: var(--text-soft);
-    font-weight: 650;
+    font-weight: var(--weight-semibold);
   }
 
   .field-note {
-    margin: 1.5rem 0 0;
+    margin: var(--space-5) 0 0;
     color: var(--text-soft);
   }
 
@@ -363,6 +383,7 @@ const printSettings = [
   .print-figure img {
     display: block;
     width: 100%;
+    height: auto;
     max-height: 280px;
     object-fit: contain;
     background: var(--surface);
